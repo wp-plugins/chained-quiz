@@ -1,0 +1,364 @@
+# Copyright (C) 2013 Chained Quiz
+# This file is distributed under the same license as the Chained Quiz package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Chained Quiz 0.5.7\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/chained-quiz\n"
+"POT-Creation-Date: 2013-12-20 15:59:43+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: controllers/quizzes.php:32
+msgid ""
+"Congratulations, you completed the <span>quiz!</span>\n"
+"<h2>{{result-title}}</h2>\n"
+"{{result-text}}\n"
+"\n"
+"You achieved {{points}} points from {{questions}} questions."
+msgstr ""
+
+#: controllers/quizzes.php:82
+msgid "Quiz not found"
+msgstr ""
+
+#: controllers/results.php:18
+msgid "The result was not added"
+msgstr ""
+
+#: controllers/results.php:28
+msgid "The result was not saved"
+msgstr ""
+
+#: controllers/results.php:37
+msgid "The result was not deleted"
+msgstr ""
+
+#: controllers/shortcodes.php:6
+msgid "No quiz to load"
+msgstr ""
+
+#: models/basic.php:84
+msgid "Chained Quiz"
+msgstr ""
+
+#: models/basic.php:87
+msgid "Chained Quiz Results"
+msgstr ""
+
+#: models/basic.php:89
+msgid "Chained Quiz Questions"
+msgstr ""
+
+#: models/basic.php:91
+msgid "Users Completed Quiz"
+msgstr ""
+
+#: models/question.php:10 models/question.php:22 models/question.php:35
+#: models/quiz.php:9 models/quiz.php:19 models/result.php:10
+#: models/result.php:21 models/result.php:31
+msgid "DB Error"
+msgstr ""
+
+#: views/chained-quizzes.html.php:2
+msgid "Chained Quizzes"
+msgstr ""
+
+#: views/chained-quizzes.html.php:4
+msgid "Create new chained quiz"
+msgstr ""
+
+#: views/chained-quizzes.html.php:8
+msgid "Quiz title"
+msgstr ""
+
+#: views/chained-quizzes.html.php:8
+msgid "Quiz Shortcode"
+msgstr ""
+
+#: views/chained-quizzes.html.php:8
+msgid "Questions"
+msgstr ""
+
+#: views/chained-quizzes.html.php:9
+msgid "Results"
+msgstr ""
+
+#: views/chained-quizzes.html.php:9
+msgid "Submitted by"
+msgstr ""
+
+#: views/chained-quizzes.html.php:9
+msgid "Edit/Delete"
+msgstr ""
+
+#: views/chained-quizzes.html.php:13 views/chained-quizzes.html.php:14
+msgid "Manage"
+msgstr ""
+
+#: views/chained-quizzes.html.php:15
+msgid "View submissions"
+msgstr ""
+
+#: views/chained-quizzes.html.php:16 views/questions.html.php:16
+msgid "Edit"
+msgstr ""
+
+#: views/chained-quizzes.html.php:17 views/questions.html.php:16
+msgid "Delete"
+msgstr ""
+
+#: views/chained-quizzes.html.php:21
+msgid "There are no quizzes yet."
+msgstr ""
+
+#: views/chained-quizzes.html.php:27 views/questions.html.php:24
+#: views/results.html.php:44
+msgid "Are you sure?"
+msgstr ""
+
+#: views/choice.html.php:1
+msgid "Points:"
+msgstr ""
+
+#: views/choice.html.php:1
+msgid "Correct answer"
+msgstr ""
+
+#: views/choice.html.php:1
+msgid "When selected go to:"
+msgstr ""
+
+#: views/choice.html.php:2
+msgid "Next question"
+msgstr ""
+
+#: views/choice.html.php:3
+msgid "Finalize quiz"
+msgstr ""
+
+#: views/choice.html.php:5
+msgid "- Select question -"
+msgstr ""
+
+#: views/choice.html.php:12
+msgid "Delete this choice"
+msgstr ""
+
+#: views/completed.html.php:2
+msgid "Users who submitted quiz \"%s\""
+msgstr ""
+
+#: views/completed.html.php:3 views/question.html.php:4
+#: views/questions.html.php:4 views/quiz.html.php:4 views/results.html.php:4
+msgid "Back to quizzes"
+msgstr ""
+
+#: views/completed.html.php:3
+msgid "Manage questions"
+msgstr ""
+
+#: views/completed.html.php:4 views/question.html.php:5
+#: views/questions.html.php:5
+msgid "Manage Results"
+msgstr ""
+
+#: views/completed.html.php:5 views/question.html.php:6
+#: views/questions.html.php:6 views/results.html.php:6
+msgid "Edit This Quiz"
+msgstr ""
+
+#: views/completed.html.php:10
+msgid "User name or IP"
+msgstr ""
+
+#: views/completed.html.php:10
+msgid "Date/time"
+msgstr ""
+
+#: views/completed.html.php:11
+msgid "Points"
+msgstr ""
+
+#: views/completed.html.php:11
+msgid "Result"
+msgstr ""
+
+#: views/completed.html.php:21
+msgid "previous page"
+msgstr ""
+
+#: views/completed.html.php:23
+msgid "next page"
+msgstr ""
+
+#: views/completed.html.php:25
+msgid "No one has submitted this quiz yet."
+msgstr ""
+
+#: views/display-quiz.html.php:13
+msgid "Go Ahead"
+msgstr ""
+
+#: views/question.html.php:2
+msgid "Add/Edit Question in \"%s\""
+msgstr ""
+
+#: views/question.html.php:4
+msgid "Back to questions"
+msgstr ""
+
+#: views/question.html.php:10
+msgid "Question title"
+msgstr ""
+
+#: views/question.html.php:11
+msgid "Question contents"
+msgstr ""
+
+#: views/question.html.php:12
+msgid "Question type:"
+msgstr ""
+
+#: views/question.html.php:13
+msgid "Radio buttons (one possible answer)"
+msgstr ""
+
+#: views/question.html.php:14
+msgid "Checkboxes (multiple possible answers)"
+msgstr ""
+
+#: views/question.html.php:15
+msgid "Text box (open-end, essay question)"
+msgstr ""
+
+#: views/question.html.php:18
+msgid "Choices/Answers for this question"
+msgstr ""
+
+#: views/question.html.php:20
+msgid "Add more rows"
+msgstr ""
+
+#: views/question.html.php:32
+msgid "Save question and answers"
+msgstr ""
+
+#: views/question.html.php:55
+msgid "Please enter question title"
+msgstr ""
+
+#: views/questions.html.php:2
+msgid "Manage Questions in %s"
+msgstr ""
+
+#: views/questions.html.php:9
+msgid "Click here to add new question"
+msgstr ""
+
+#: views/questions.html.php:12
+msgid "ID"
+msgstr ""
+
+#: views/questions.html.php:12
+msgid "Question"
+msgstr ""
+
+#: views/questions.html.php:12
+msgid "Type"
+msgstr ""
+
+#: views/questions.html.php:13
+msgid "Edit / Delete"
+msgstr ""
+
+#: views/quiz.html.php:2
+msgid "Add/Edit Chained Quiz"
+msgstr ""
+
+#: views/quiz.html.php:6 views/results.html.php:5
+msgid "Manage Questions"
+msgstr ""
+
+#: views/quiz.html.php:7
+msgid "Manage Results / Outcomes"
+msgstr ""
+
+#: views/quiz.html.php:11
+msgid "Quiz Title"
+msgstr ""
+
+#: views/quiz.html.php:13
+msgid "Final Output"
+msgstr ""
+
+#: views/quiz.html.php:15
+msgid "This is the content that is shown to the user after they complete the quiz. The following variables can be used:"
+msgstr ""
+
+#: views/quiz.html.php:18
+msgid "- The result (grade) title"
+msgstr ""
+
+#: views/quiz.html.php:19
+msgid "- The result (grade) text/description"
+msgstr ""
+
+#: views/quiz.html.php:20
+msgid "- Points collected"
+msgstr ""
+
+#: views/quiz.html.php:21
+msgid "- The number of total questions answered"
+msgstr ""
+
+#: views/quiz.html.php:22
+msgid "- The number of correctly answered questions"
+msgstr ""
+
+#: views/quiz.html.php:25
+msgid "Save Quiz"
+msgstr ""
+
+#: views/quiz.html.php:33
+msgid "Title is required"
+msgstr ""
+
+#: views/results.html.php:2
+msgid "Manage Quiz Results/Outcomes"
+msgstr ""
+
+#: views/results.html.php:10 views/results.html.php:20
+msgid "Result title"
+msgstr ""
+
+#: views/results.html.php:11 views/results.html.php:21
+msgid "Result text/description"
+msgstr ""
+
+#: views/results.html.php:12 views/results.html.php:22
+msgid "Min. points:"
+msgstr ""
+
+#: views/results.html.php:13 views/results.html.php:23
+msgid "Max. points:"
+msgstr ""
+
+#: views/results.html.php:14
+msgid "Add Result"
+msgstr ""
+
+#: views/results.html.php:24
+msgid "Save Result"
+msgstr ""
+
+#: views/results.html.php:25
+msgid "Delete Result"
+msgstr ""
+
+#: views/results.html.php:35
+msgid "Please enter title"
+msgstr ""
