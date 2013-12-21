@@ -1,0 +1,31 @@
+.wphostel-form label {
+	font-weight:bold;
+	min-width: 150px;
+	display:block;
+	float:left;
+}
+
+.wphostel-form div:not(.wp-editor-tools) {
+	 margin-bottom:15px;
+}
+
+.wphostel-box {padding:10px;}
+
+.wphostel-error {
+	color: red;
+	font-weight: bold;
+}
+
+.wphostel-note {
+	background-color: #E5FFF5;
+	padding: 5px;
+	font-weight: bold;
+}
+
+.wphostel-dashed {
+	border: 1px dashed black;
+}
+
+.wphostel-help {
+	font-style: italic;
+}
