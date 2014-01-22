@@ -60,6 +60,10 @@ None yet, please ask in the forum
 
 == Changelog ==
 
+= Version 0.6 = 
+- Added option to automatically continue when radio button is checked
+- Fixed bugs with multiple-select questions
+
 = Version 0.5.7 =
 
 First public release

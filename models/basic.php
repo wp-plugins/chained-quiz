@@ -1,11 +1,11 @@
 <?php
 // main model containing general config and UI functions
 class ChainedQuiz {
-   static function install() {
+   static function install($update = false) {
    	global $wpdb;	
    	$wpdb -> show_errors();
    	
-   	self::init();
+   	if(!$update) self::init();
 	  
 	   // quizzes
    	if($wpdb->get_var("SHOW TABLES LIKE '".CHAINED_QUIZZES."'") != CHAINED_QUIZZES) {        
@@ -76,6 +76,12 @@ class ChainedQuiz {
 			
 			$wpdb->query($sql);
 	  } 	 
+	  
+	  chainedquiz_add_db_fields(array(
+	  	  array("name" => 'autocontinue', 'type' => 'TINYINT UNSIGNED NOT NULL DEFAULT 0')
+	  ), CHAINED_QUESTIONS);
+	  
+	  update_option('chainedquiz_version', "0.58");
 	  // exit;
    }
    
@@ -128,6 +134,9 @@ class ChainedQuiz {
 				
 		// shortcodes
 		add_shortcode('chained-quiz', array("ChainedQuizShortcodes", "quiz"));		
+		
+		$version = get_option('chainedquiz_version');
+		if($version < '0.58') self::install(true);
 	}
 			
 	// manage general options

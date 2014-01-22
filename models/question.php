@@ -4,8 +4,8 @@ class ChainedQuizQuestion {
 		global $wpdb;
 		
 		$result = $wpdb->query($wpdb->prepare("INSERT INTO ".CHAINED_QUESTIONS." SET
-			quiz_id=%d, question=%s, qtype=%s, rank=%d, title=%s", 
-			$vars['quiz_id'], $vars['question'], $vars['qtype'], @$vars['rank'], $vars['title']));
+			quiz_id=%d, question=%s, qtype=%s, rank=%d, title=%s, autocontinue=%d", 
+			$vars['quiz_id'], $vars['question'], $vars['qtype'], @$vars['rank'], $vars['title'], @$vars['autocontinue']));
 			
 		if($result === false) throw new Exception(__('DB Error', 'chained'));
 		return $wpdb->insert_id;	
@@ -15,8 +15,8 @@ class ChainedQuizQuestion {
 		global $wpdb;
 		
 		$result = $wpdb->query($wpdb->prepare("UPDATE ".CHAINED_QUESTIONS." SET
-			question=%s, qtype=%s, title=%s WHERE id=%d", 
-			$vars['question'], $vars['qtype'], $vars['title'], $id));
+			question=%s, qtype=%s, title=%s, autocontinue=%d WHERE id=%d", 
+			$vars['question'], $vars['qtype'], $vars['title'], @$vars['autocontinue'], $id));
 			
 			
 		if($result === false) throw new Exception(__('DB Error', 'chained'));
@@ -80,6 +80,12 @@ class ChainedQuizQuestion {
 
   // displays the possible choices on a question
   function display_choices($question, $choices) {
+  	   $autocontinue = '';
+  	   if($question->qtype == 'radio' and $question->autocontinue) {
+  	   	$autocontinue = "onclick=\"chainedQuiz.goon(".$question->quiz_id.", '".admin_url('admin-ajax.php')."');\"";
+  	   }
+  	   
+  	   
 		switch($question->qtype) {
 			case 'text':
 				return "<div class='chained-quiz-choice'><textarea class='chained-quiz-frontend' name='answer'></textarea></div>";
@@ -92,7 +98,7 @@ class ChainedQuizQuestion {
 				$output = "";
 				foreach($choices as $choice) {
 					$choice_text = stripslashes($choice->choice);
-					$output .= "<div class='chained-quiz-choice'><input type='$type' name='$name' value='".$choice->id."'> $choice_text</div>";
+					$output .= "<div class='chained-quiz-choice'><input type='$type' name='$name' value='".$choice->id."' $autocontinue> $choice_text</div>";
 				}
 						
 				return $output;
@@ -122,8 +128,13 @@ class ChainedQuizQuestion {
 		$goto = array();
 		$answer_ids = array(0);
 		if(is_array($answer)) {
-			foreach($answer as $ans) $answer_ids[] = $ans;
-		} else $answer_ids[] = $answer; 
+			foreach($answer as $ans) {
+				 if(!empty($ans)) $answer_ids[] = $ans;
+			}
+		} else {
+			if(!empty($answer)) $answer_ids[] = $answer;
+		} 
+		
 		
 		// select the choices selected by the user		
 		$choices = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".CHAINED_CHOICES." 

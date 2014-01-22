@@ -105,8 +105,9 @@ You achieved {{points}} points from {{questions}} questions.', 'chained');
 		// select question
 		$question = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".CHAINED_QUESTIONS." WHERE id=%d", $_POST['question_id']));
 		
-		// prepare $answer var
-		$answer = ($question->qtype == 'checkbox') ? @$_POST['answers[]'] : @$_POST['answer'];
+		// prepare $answer var		
+		$answer = ($question->qtype == 'checkbox') ? @$_POST['answers'] : @$_POST['answer'];
+		if(empty($answer)) $answer = 0;
 		
 		// calculate points
 		$points = $_question->calculate_points($question, $answer);

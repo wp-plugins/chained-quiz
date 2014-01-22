@@ -1,14 +1,14 @@
-# Copyright (C) 2013 Chained Quiz
+# Copyright (C) 2014 Chained Quiz
 # This file is distributed under the same license as the Chained Quiz package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Chained Quiz 0.5.7\n"
+"Project-Id-Version: Chained Quiz 0.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/chained-quiz\n"
-"POT-Creation-Date: 2013-12-20 15:59:43+00:00\n"
+"POT-Creation-Date: 2014-01-22 17:37:07+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
@@ -41,19 +41,19 @@ msgstr ""
 msgid "No quiz to load"
 msgstr ""
 
-#: models/basic.php:84
+#: models/basic.php:90
 msgid "Chained Quiz"
 msgstr ""
 
-#: models/basic.php:87
+#: models/basic.php:93
 msgid "Chained Quiz Results"
 msgstr ""
 
-#: models/basic.php:89
+#: models/basic.php:95
 msgid "Chained Quiz Questions"
 msgstr ""
 
-#: models/basic.php:91
+#: models/basic.php:97
 msgid "Users Completed Quiz"
 msgstr ""
 
@@ -236,18 +236,22 @@ msgid "Text box (open-end, essay question)"
 msgstr ""
 
 #: views/question.html.php:18
-msgid "Choices/Answers for this question"
+msgid "Automatically continue to the next question when a choice is selected"
 msgstr ""
 
 #: views/question.html.php:20
+msgid "Choices/Answers for this question"
+msgstr ""
+
+#: views/question.html.php:22
 msgid "Add more rows"
 msgstr ""
 
-#: views/question.html.php:32
+#: views/question.html.php:34
 msgid "Save question and answers"
 msgstr ""
 
-#: views/question.html.php:55
+#: views/question.html.php:57
 msgid "Please enter question title"
 msgstr ""
 

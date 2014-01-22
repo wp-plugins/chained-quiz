@@ -58,7 +58,7 @@ class ChainedQuizQuiz {
 		 // now insert in completed
 		 $wpdb->query( $wpdb->prepare("INSERT INTO ".CHAINED_COMPLETED." SET
 		 	quiz_id = %d, points = %d, result_id = %d, datetime = NOW(), ip = %s, user_id = %d, snapshot = %s",
-		 	$quiz->id, $points, $result->id, $_SERVER['REMOTE_ADDR'], $user_id, $output));	 
+		 	$quiz->id, $points, @$result->id, $_SERVER['REMOTE_ADDR'], $user_id, $output));	 
 		 
 		 return $output;
   }
