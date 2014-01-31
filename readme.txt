@@ -60,6 +60,9 @@ None yet, please ask in the forum
 
 == Changelog ==
 
+= Version 0.6.1 =
+- Added hyperlink to see the quiz when it is published in a post or page. If quiz has no hyperlink this means it's not yet published.
+
 = Version 0.6 = 
 - Added option to automatically continue when radio button is checked
 - Fixed bugs with multiple-select questions

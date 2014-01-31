@@ -69,6 +69,21 @@ You achieved {{points}} points from {{questions}} questions.', 'chained');
 		
 		// select quizzes
 		$quizzes = $wpdb->get_results("SELECT * FROM ".CHAINED_QUIZZES." ORDER BY id DESC");
+		
+		// now select all posts that have watu shortcode in them
+		$posts=$wpdb->get_results("SELECT * FROM {$wpdb->posts} 
+		WHERE post_content LIKE '%[chained-quiz %]%' AND post_title!=''
+		AND post_status='publish' ORDER BY post_date DESC");	
+		
+		// match posts to exams
+		foreach($quizzes as $cnt=>$quiz) {
+			foreach($posts as $post) {
+				if(strstr($post->post_content,"[chained-quiz ".$quiz->id."]")) {
+					$quizzes[$cnt]->post=$post;			
+					break;
+				}
+			}
+		}
 		include(CHAINED_PATH."/views/chained-quizzes.html.php");
 	} // end list_quizzes	
 	
