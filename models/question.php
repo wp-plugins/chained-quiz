@@ -98,7 +98,8 @@ class ChainedQuizQuestion {
 				$output = "";
 				foreach($choices as $choice) {
 					$choice_text = stripslashes($choice->choice);
-					$output .= "<div class='chained-quiz-choice'><input type='$type' name='$name' value='".$choice->id."' $autocontinue> $choice_text</div>";
+					
+					$output .= "<div class='chained-quiz-choice'><label class='chained-quiz-label'><input class='chained-quiz-frontend chained-quiz-$type' type='$type' name='$name' value='".$choice->id."' $autocontinue> $choice_text</label></div>";
 				}
 						
 				return $output;
