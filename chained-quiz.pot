@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Chained Quiz package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Chained Quiz 0.6.1\n"
+"Project-Id-Version: Chained Quiz 0.6.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/chained-quiz\n"
-"POT-Creation-Date: 2014-01-31 16:46:30+00:00\n"
+"POT-Creation-Date: 2014-02-19 16:35:06+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,6 +41,8 @@ msgstr ""
 msgid "No quiz to load"
 msgstr ""
 
+#. #-#-#-#-#  chained-quiz.pot (Chained Quiz 0.6.3)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
 #: models/basic.php:90
 msgid "Chained Quiz"
 msgstr ""
@@ -55,6 +57,10 @@ msgstr ""
 
 #: models/basic.php:97
 msgid "Users Completed Quiz"
+msgstr ""
+
+#: models/basic.php:119
+msgid "Please answer the question"
 msgstr ""
 
 #: models/question.php:10 models/question.php:22 models/question.php:35
@@ -103,23 +109,26 @@ msgstr ""
 msgid "View submissions"
 msgstr ""
 
-#: views/chained-quizzes.html.php:18 views/questions.html.php:16
+#: views/chained-quizzes.html.php:18 views/questions.html.php:17
 msgid "Edit"
 msgstr ""
 
-#: views/chained-quizzes.html.php:19 views/questions.html.php:16
+#: views/chained-quizzes.html.php:19 views/questions.html.php:17
 msgid "Delete"
 msgstr ""
 
 #: views/chained-quizzes.html.php:22
-msgid "Note: if a quiz title is not hyperlinked this means you have not published its shortcode yet. You must place the shortcode in a post or page in order to make the quiz accessible to the public."
+msgid ""
+"Note: if a quiz title is not hyperlinked this means you have not published "
+"its shortcode yet. You must place the shortcode in a post or page in order "
+"to make the quiz accessible to the public."
 msgstr ""
 
 #: views/chained-quizzes.html.php:24
 msgid "There are no quizzes yet."
 msgstr ""
 
-#: views/chained-quizzes.html.php:30 views/questions.html.php:24
+#: views/chained-quizzes.html.php:30 views/questions.html.php:25
 #: views/results.html.php:44
 msgid "Are you sure?"
 msgstr ""
@@ -304,7 +313,9 @@ msgid "Final Output"
 msgstr ""
 
 #: views/quiz.html.php:15
-msgid "This is the content that is shown to the user after they complete the quiz. The following variables can be used:"
+msgid ""
+"This is the content that is shown to the user after they complete the quiz. "
+"The following variables can be used:"
 msgstr ""
 
 #: views/quiz.html.php:18

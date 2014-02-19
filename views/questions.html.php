@@ -11,8 +11,9 @@
 		<table class="widefat">
 			<tr><th><?php _e('ID', 'chained')?></th><th><?php _e('Question', 'chained')?></th><th><?php _e('Type', 'chained')?></th>
 				<th><?php _e('Edit / Delete', 'chained')?></th></tr>
-			<?php foreach($questions as $question):?>
-				<tr><td><?php echo $question->id?></td><td><?php echo stripslashes($question->title)?></td>
+			<?php foreach($questions as $question):
+				$class = ('alternate' == @$class) ? '' : 'alternate';?>
+				<tr class="<?php echo $class?>"><td><?php echo $question->id?></td><td><?php echo stripslashes($question->title)?></td>
 				<td><?php echo $question->qtype?></td><td><a href="admin.php?page=chainedquiz_questions&action=edit&id=<?php echo $question->id?>"><?php _e('Edit', 'chained')?></a> | <a href="#" onclick="chainedConfirmDelete(<?php echo $question->id?>);return false;"><?php _e('Delete', 'chained')?></a></td></tr>
 			<?php endforeach;?>	
 		</table>

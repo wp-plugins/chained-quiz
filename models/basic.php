@@ -115,6 +115,9 @@ class ChainedQuiz {
 				false
 		);
 		wp_enqueue_script("chained-common");
+		
+		$translation_array = array('please_answer' => __('Please answer the question', 'chained'));
+		wp_localize_script( 'chained-common', 'chained_i18n', $translation_array );	
 	}
 	
 	// initialization

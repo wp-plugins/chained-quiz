@@ -15,6 +15,7 @@
 	</div>
 	<input type="hidden" name="question_id" value="<?php echo $question->id?>">
 	<input type="hidden" name="quiz_id" value="<?php echo $quiz->id?>">
+	<input type="hidden" name="question_type" value="<?php echo $question->qtype?>">
 	<input type="hidden" name="points" value="0">
 </form>
 <?php if(!empty($first_load)):?></div><?php endif;?>

@@ -60,9 +60,10 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 0.6.2 =
+= Version 0.6.3 =
 - Added hyperlink to see the quiz when it is published in a post or page. If quiz has no hyperlink this means it's not yet published.
 - Added classes around choices for better CSS control as suggested by iisisrael @ wordpress.org
+- Answering question is now always required to avoid premature ending of the quiz
 
 = Version 0.6 = 
 - Added option to automatically continue when radio button is checked
