@@ -116,8 +116,14 @@ class ChainedQuizQuestion {
   	else $ids[] = $answer;
   	
   	// select points
-  	$points = $wpdb->get_var($wpdb->prepare("SELECT SUM(points) FROM ".CHAINED_CHOICES."
-  		WHERE question_id=%d AND id IN (".implode(",", $ids).")", $question->id));
+  	if($question->qtype != 'text') {
+	  	$points = $wpdb->get_var($wpdb->prepare("SELECT SUM(points) FROM ".CHAINED_CHOICES."
+	  		WHERE question_id=%d AND id IN (".implode(",", $ids).")", $question->id));
+	  }
+	  else {
+	  	$points = $wpdb->get_var($wpdb->prepare("SELECT points FROM ".CHAINED_CHOICES."
+	  		WHERE question_id=%d AND choice LIKE %s", $question->id, $answer));
+		}
   	return $points;	
   }
   
@@ -132,8 +138,14 @@ class ChainedQuizQuestion {
 			foreach($answer as $ans) {
 				 if(!empty($ans)) $answer_ids[] = $ans;
 			}
-		} else {
-			if(!empty($answer)) $answer_ids[] = $answer;
+		} 
+		else {
+			if($question->qtype == 'text') {
+					$answer = $wpdb->get_var($wpdb->prepare("SELECT id FROM ".CHAINED_CHOICES."
+	  		  WHERE question_id=%d AND choice LIKE %s", $question->id, $answer));				
+			} 
+			
+			if(!empty($answer)) $answer_ids[] = $answer; // radio buttons and text areas
 		} 
 		
 		

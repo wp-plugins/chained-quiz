@@ -123,7 +123,7 @@ You achieved {{points}} points from {{questions}} questions.', 'chained');
 		// prepare $answer var		
 		$answer = ($question->qtype == 'checkbox') ? @$_POST['answers'] : @$_POST['answer'];
 		if(empty($answer)) $answer = 0;
-		
+				
 		// calculate points
 		$points = $_question->calculate_points($question, $answer);
 		echo $points."|CHAINEDQUIZ|";

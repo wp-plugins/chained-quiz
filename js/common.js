@@ -13,10 +13,15 @@ chainedQuiz.goon = function(quizID, url) {
 		if(this.checked) anyChecked = true; 	
 	});
 	
-	if(!anyChecked) {
+	if(!anyChecked && (qType != 'text')) {
 		alert(chained_i18n.please_answer);
 		return false;
 	}
+
+  if(qType == 'text' && jQuery('#chained-quiz-form-' + quizID + ' textarea[name=answer]').val() == '') {
+  	alert(chained_i18n.please_answer);
+		return false;
+  }
 	
 	// submit the answer by ajax
 	data = jQuery('#chained-quiz-form-'+quizID).serialize();
