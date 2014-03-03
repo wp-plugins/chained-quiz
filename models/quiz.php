@@ -48,7 +48,7 @@ class ChainedQuizQuiz {
 		 // get final screen and replace vars
 		 $output = stripslashes($quiz->output);
 		 $output = str_replace('{{result-title}}', @$result->title, $output);
-		 $output = str_replace('{{result-text}}', @$result->description, $output);
+		 $output = str_replace('{{result-text}}', stripslashes(@$result->description), $output);
 		 $output = str_replace('{{points}}', $points, $output);
 		 $output = str_replace('{{questions}}', $_POST['total_questions'], $output);
 		 
