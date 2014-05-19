@@ -2,7 +2,7 @@
 Contributors: prasunsen
 Tags: quiz, exam, test, questionnaire, survey
 Requires at least: 3.3
-Tested up to: 3.8
+Tested up to: 3.9.1
 Stable tag: trunk
 License: GPL2
 
@@ -60,7 +60,8 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 0.6.5 =
+= Version 0.6.6 =
+- Added auto-scroll to the top of next question (useful if you have long questions)
 - Added hyperlink to see the quiz when it is published in a post or page. If quiz has no hyperlink this means it's not yet published.
 - Added classes around choices for better CSS control as suggested by iisisrael @ wordpress.org
 - Answering question is now always required to avoid premature ending of the quiz

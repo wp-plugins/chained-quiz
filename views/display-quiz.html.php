@@ -1,6 +1,6 @@
 <?php if(!empty($first_load)):?><div class="chained-quiz" id="chained-quiz-div-<?php echo $quiz->id?>"><?php endif;?>
 <form method="post" id="chained-quiz-form-<?php echo $quiz->id?>">
-	<div class="chained-quiz-area">
+	<div class="chained-quiz-area" id="chained-quiz-wrap-<?php echo $quiz->id?>">
 		<div class="chained-quiz-question">
 			<?php echo $_question->display_question($question);?>
 		</div>

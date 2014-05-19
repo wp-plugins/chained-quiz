@@ -35,6 +35,13 @@ chainedQuiz.goon = function(quizID, url) {
 		  parts = msg.split("|CHAINEDQUIZ|");
 		  points = parseFloat(parts[0]);		  
 		  chainedQuiz.points += points;		  
+
+			if(jQuery('body').scrollTop() > 250) {				
+				jQuery('html, body').animate({
+			   		scrollTop: jQuery('#chained-quiz-wrap-'+quizID).offset().top -100
+			   }, 500);   
+			}		  
+		  
 		  jQuery('#chained-quiz-div-'+quizID).html(parts[1]);
 		  jQuery('#chained-quiz-form-' + quizID + ' input[name=points]').val(chainedQuiz.points);
 	});
