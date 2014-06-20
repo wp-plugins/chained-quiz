@@ -60,7 +60,8 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 0.6.6 =
+= Version 0.6.7 =
+- Added sorting on the "View Submissions" page
 - Added auto-scroll to the top of next question (useful if you have long questions)
 - Added hyperlink to see the quiz when it is published in a post or page. If quiz has no hyperlink this means it's not yet published.
 - Added classes around choices for better CSS control as suggested by iisisrael @ wordpress.org
