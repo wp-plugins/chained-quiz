@@ -110,12 +110,20 @@ You achieved {{points}} points from {{questions}} questions.', 'chained');
 
 	// answer a question or complete the quiz
 	static function answer_question() {
-		global $wpdb;
+		global $wpdb, $user_ID;
 		$_quiz = new ChainedQuizQuiz();
 		$_question = new ChainedQuizQuestion();
 		
 		// select quiz
 		$quiz = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".CHAINED_QUIZZES." WHERE id=%d", $_POST['quiz_id']));
+		
+		// completion ID already created?
+		if(empty($_SESSION['chained_completion_id'])) {
+			$wpdb->query( $wpdb->prepare("INSERT INTO ".CHAINED_COMPLETED." SET
+		 		quiz_id = %d, datetime = NOW(), ip = %s, user_id = %d",
+		 		$quiz->id, $_SERVER['REMOTE_ADDR'], $user_ID));
+		 	$_SESSION['chained_completion_id'] = $wpdb->insert_id;	
+		}
 		
 		// select question
 		$question = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".CHAINED_QUESTIONS." WHERE id=%d", $_POST['question_id']));
@@ -130,6 +138,14 @@ You achieved {{points}} points from {{questions}} questions.', 'chained');
 		
 		// figure out next question
 		$next_question = $_question->next($question, $answer);
+		
+		// store the answer
+		if(!empty($_SESSION['chained_completion_id'])) {
+			if(is_array($answer)) $answer = implode(",", $answer);
+			$wpdb->query($wpdb->prepare("INSERT INTO ".CHAINED_USER_ANSWERS." SET
+				quiz_id=%d, completion_id=%d, question_id=%d, answer=%s, points=%f",
+				$quiz->id, $_SESSION['chained_completion_id'], $question->id, $answer, $points));
+		}
 		
 		if(!empty($next_question->id)) {
 			$question = $next_question;

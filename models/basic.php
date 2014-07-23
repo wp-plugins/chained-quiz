@@ -77,11 +77,26 @@ class ChainedQuiz {
 			$wpdb->query($sql);
 	  } 	 
 	  
+	  // details of user answers
+	  if($wpdb->get_var("SHOW TABLES LIKE '".CHAINED_USER_ANSWERS."'") != CHAINED_USER_ANSWERS) {        
+			$sql = "CREATE TABLE `" . CHAINED_USER_ANSWERS . "` (
+				  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				  `quiz_id` INT UNSIGNED NOT NULL DEFAULT 0,
+				  `completion_id` INT UNSIGNED NOT NULL DEFAULT 0,
+				  `question_id` INT UNSIGNED NOT NULL DEFAULT 0,
+				  `answer` TEXT,
+				  `points` DECIMAL(4,2) NOT NULL DEFAULT '0.00'				  
+				) DEFAULT CHARSET=utf8;";
+			
+			$wpdb->query($sql);
+	  } 	 
+	  
+	  
 	  chainedquiz_add_db_fields(array(
 	  	  array("name" => 'autocontinue', 'type' => 'TINYINT UNSIGNED NOT NULL DEFAULT 0')
 	  ), CHAINED_QUESTIONS);
 	  
-	  update_option('chainedquiz_version', "0.58");
+	  update_option('chainedquiz_version', "0.59");
 	  // exit;
    }
    
@@ -132,6 +147,7 @@ class ChainedQuiz {
 		define( 'CHAINED_CHOICES', $wpdb->prefix. "chained_choices");
 		define( 'CHAINED_RESULTS', $wpdb->prefix. "chained_results");
 		define( 'CHAINED_COMPLETED', $wpdb->prefix. "chained_completed");
+		define( 'CHAINED_USER_ANSWERS', $wpdb->prefix. "chained_user_answers");
 		
 		define( 'CHAINED_VERSION', get_option('chained_version'));
 				
@@ -139,7 +155,7 @@ class ChainedQuiz {
 		add_shortcode('chained-quiz', array("ChainedQuizShortcodes", "quiz"));		
 		
 		$version = get_option('chainedquiz_version');
-		if($version < '0.58') self::install(true);
+		if($version < '0.59') self::install(true);
 	}
 			
 	// manage general options

@@ -56,9 +56,19 @@ class ChainedQuizQuiz {
 		 $output = wpautop($output);
 		
 		 // now insert in completed
-		 $wpdb->query( $wpdb->prepare("INSERT INTO ".CHAINED_COMPLETED." SET
-		 	quiz_id = %d, points = %d, result_id = %d, datetime = NOW(), ip = %s, user_id = %d, snapshot = %s",
-		 	$quiz->id, $points, @$result->id, $_SERVER['REMOTE_ADDR'], $user_id, $output));	 
+		 if(!empty($_SESSION['chained_completion_id'])) {
+		 	$wpdb->query( $wpdb->prepare("UPDATE ".CHAINED_COMPLETED." SET
+		 		quiz_id = %d, points = %d, result_id = %d, datetime = NOW(), ip = %s, user_id = %d, 
+		 		snapshot = %s WHERE id=%d",
+		 		$quiz->id, $points, @$result->id, $_SERVER['REMOTE_ADDR'], $user_id, $output, $_SESSION['chained_completion_id']));
+		 	unset($_SESSION['chained_completion_id']);	
+		 }	 
+		 else {
+		 	// normally this shouldn't happen, but just in case
+		 	$wpdb->query( $wpdb->prepare("INSERT INTO ".CHAINED_COMPLETED." SET
+		 		quiz_id = %d, points = %d, result_id = %d, datetime = NOW(), ip = %s, user_id = %d, snapshot = %s",
+		 		$quiz->id, $points, @$result->id, $_SERVER['REMOTE_ADDR'], $user_id, $output));
+		 }
 		 
 		 return $output;
   }

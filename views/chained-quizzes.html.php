@@ -20,6 +20,10 @@
 		<?php endforeach;?>	
 	</table>
 	<p><?php _e('Note: if a quiz title is not hyperlinked this means you have not published its shortcode yet. You must place the shortcode in a post or page in order to make the quiz accessible to the public.', 'chained')?></p>
+	
+	<h3>Did you know?</h3>
+	
+	<p>Now you can use <a href="http://blog.calendarscripts.info/chained-quiz-logic-free-add-on-for-watupro/" target="_blank">this tool</a> to transfer your quizzes to the best premium quiz plugin <a href="http://calendarscripts.info/watupro/" target="_blank">WatuPRO</a>. This will give you access to premuim support and a lot of great fatures like user registration, randomizing, categorization, super-high flexibility, lots of question types, and more.</p>
 	<?php else:?>
 		<p><?php _e('There are no quizzes yet.', 'chained')?></p>
 	<?php endif;?>	

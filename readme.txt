@@ -60,7 +60,8 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 0.6.7 =
+= Version 0.7 =
+- Now the detailed answers and the path user walked will be stored, and can be seen in the "View submissions" page.
 - Added sorting on the "View Submissions" page
 - Added auto-scroll to the top of next question (useful if you have long questions)
 - Added hyperlink to see the quiz when it is published in a post or page. If quiz has no hyperlink this means it's not yet published.
