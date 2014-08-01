@@ -25,7 +25,7 @@
 							<table  width="100%"><tr><th><?php _e('Question', 'chained')?></th><th><?php _e('Answer', 'chained')?></th>
 								<th><?php _e('Points', 'chained')?></th></tr>
 							<?php foreach($record->details as $detail):?>
-								<tr><td><?php echo stripslashes($detail->question)?></td><td><?php echo $detail->answer_text;?></td>
+								<tr style="background:#EEE;"><td><?php echo stripslashes($detail->question)?></td><td><?php echo $detail->answer_text;?></td>
 									<td><?php echo $detail->points?></td></tr>
 							<?php endforeach;?>	
 							</table>						
@@ -39,7 +39,12 @@
 			<a href="admin.php?page=chainedquiz_list&quiz_id=<?php echo $quiz->id?>&offset=<?php echo ($offset - 25)?>&ob=<?php echo $ob?>&dir=<?php echo $dir?>"><?php _e('previous page', 'chained')?></a>
 		<?php endif;?> <?php if($count > ($offset + 25)):?>
 			<a href="admin.php?page=chainedquiz_list&quiz_id=<?php echo $quiz->id?>&offset=<?php echo ($offset + 25)?>&ob=<?php echo $ob?>&dir=<?php echo $dir?>"><?php _e('next page', 'chained')?></a> <?php endif;?></p>
+			
+			<h3>Did you know?</h3>
+	
+		<p>Now you can use <a href="http://blog.calendarscripts.info/chained-quiz-logic-free-add-on-for-watupro/" target="_blank">this tool</a> to transfer your quizzes to the best premium quiz plugin <a href="http://calendarscripts.info/watupro/" target="_blank">WatuPRO</a>. This will give you access to premuim support and a lot of great fatures like user registration, randomizing, categorization, super-high flexibility, lots of question types, and more.</p>
 	<?php else:?>
 		<p><?php _e('No one has submitted this quiz yet.', 'chained')?></p>
+		
 	<?php endif;?>
 </div>

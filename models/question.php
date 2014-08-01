@@ -163,6 +163,9 @@ class ChainedQuizQuestion {
 		$goto = array_flip($goto);
 		$key = array_shift($goto);
 		
+		//let's treat textareas in different way. If answer is not found, let's not finalize the quiz but go to next
+		if($question->qtype == 'text' and empty($key)) $key = 'next';
+		
 		// echo $key.'x'; 
 		if(empty($key) or $key == 'finalize') return false;
 		

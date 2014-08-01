@@ -22,7 +22,7 @@ class ChainedQuizCompleted {
 		$rids = array(0);
 		foreach($records as $record) $rids[] = $record->id;		
 		$answers = $wpdb->get_results( "SELECT tA.answer as answer, tA.points as points, tQ.question as question,
-			tA.completion_id as completion_id 
+			tA.completion_id as completion_id, tQ.qtype as qtype 
 			FROM ".CHAINED_USER_ANSWERS." tA JOIN ".CHAINED_QUESTIONS." tQ
 			ON tQ.id = tA.question_id
 			WHERE tA.completion_id IN (" .implode(',', $rids). ") ORDER BY tA.id" ); 
@@ -44,14 +44,17 @@ class ChainedQuizCompleted {
 			$ids = explode(',', $answer->answer);
 			$answer_text = '';
 			
-			foreach($ids as $id) {
-				foreach($choices as $choice) {
-					if($choice->id == $id) {
-						if(!empty($answer_text)) $answer_text .= ", ";
-						$answer_text .= stripslashes($choice->choice);
-					}
-				} // end foreach choice
-			} // end foreach id
+			if($answer->qtype == 'text') $answer_text = $answer->answer;
+			else { 
+				foreach($ids as $id) {
+					foreach($choices as $choice) {
+						if($choice->id == $id) {
+							if(!empty($answer_text)) $answer_text .= ", ";
+							$answer_text .= stripslashes($choice->choice);
+						}
+					} // end foreach choice
+				} // end foreach id
+			} // end if not textarea	
 			
 			$answers[$cnt]->answer_text = $answer_text;
 		} // end foreach answer

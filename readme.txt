@@ -60,6 +60,10 @@ None yet, please ask in the forum
 
 == Changelog ==
 
+= Version 0.7.1 =
+- Changed the way open-end questions work. If user's answer doesn't match any of your answers, they'll be sent to the next question instead of finalizing the quiz
+- Fixed problem with showing open-end questions in the "view results" page
+
 = Version 0.7 =
 - Now the detailed answers and the path user walked will be stored, and can be seen in the "View submissions" page.
 - Added sorting on the "View Submissions" page
