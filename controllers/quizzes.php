@@ -89,12 +89,20 @@ You achieved {{points}} points from {{questions}} questions.', 'chained');
 	
 	// displays a quiz
 	static function display($quiz_id) {
-	   global $wpdb;
+	   global $wpdb, $user_ID;
 	   $_question = new ChainedQuizQuestion();
 	   
 	   // select the quiz
 	   $quiz = $wpdb -> get_row($wpdb->prepare("SELECT * FROM ".CHAINED_QUIZZES." WHERE id=%d", $quiz_id));
 	   if(empty($quiz->id)) die(__('Quiz not found', 'chained'));
+	   
+	   // completion ID already created?
+		if(empty($_SESSION['chained_completion_id'])) {			
+			$wpdb->query( $wpdb->prepare("INSERT INTO ".CHAINED_COMPLETED." SET
+		 		quiz_id = %d, datetime = NOW(), ip = %s, user_id = %d",
+		 		$quiz->id, $_SERVER['REMOTE_ADDR'], $user_ID));
+		 	$_SESSION['chained_completion_id'] = $wpdb->insert_id;	
+		}
 	   
 		 // select the first question
 		 $question = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".CHAINED_QUESTIONS." WHERE quiz_id=%d
@@ -117,14 +125,6 @@ You achieved {{points}} points from {{questions}} questions.', 'chained');
 		// select quiz
 		$quiz = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".CHAINED_QUIZZES." WHERE id=%d", $_POST['quiz_id']));
 		
-		// completion ID already created?
-		if(empty($_SESSION['chained_completion_id'])) {
-			$wpdb->query( $wpdb->prepare("INSERT INTO ".CHAINED_COMPLETED." SET
-		 		quiz_id = %d, datetime = NOW(), ip = %s, user_id = %d",
-		 		$quiz->id, $_SERVER['REMOTE_ADDR'], $user_ID));
-		 	$_SESSION['chained_completion_id'] = $wpdb->insert_id;	
-		}
-		
 		// select question
 		$question = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".CHAINED_QUESTIONS." WHERE id=%d", $_POST['question_id']));
 		
@@ -142,9 +142,21 @@ You achieved {{points}} points from {{questions}} questions.', 'chained');
 		// store the answer
 		if(!empty($_SESSION['chained_completion_id'])) {
 			if(is_array($answer)) $answer = implode(",", $answer);
-			$wpdb->query($wpdb->prepare("INSERT INTO ".CHAINED_USER_ANSWERS." SET
-				quiz_id=%d, completion_id=%d, question_id=%d, answer=%s, points=%f",
-				$quiz->id, $_SESSION['chained_completion_id'], $question->id, $answer, $points));
+
+			// make sure to avoid duplicates and only update the answer if it already exists
+			$exists = $wpdb->get_var($wpdb->prepare("SELECT id FROM ".CHAINED_USER_ANSWERS."
+				WHERE quiz_id=%d AND completion_id=%d AND question_id=%d", 
+				$quiz->id, $_SESSION['chained_completion_id'], $question->id));			
+			
+			if($exists) {
+				$wpdb->query($wpdb->prepare("UPDATE ".CHAINED_USER_ANSWERS." SET
+					answer=%s, points=%f", $answer, $points));
+			}
+			else {				
+				$wpdb->query($wpdb->prepare("INSERT INTO ".CHAINED_USER_ANSWERS." SET
+					quiz_id=%d, completion_id=%d, question_id=%d, answer=%s, points=%f",
+					$quiz->id, $_SESSION['chained_completion_id'], $question->id, $answer, $points));
+			}		
 		}
 		
 		if(!empty($next_question->id)) {
