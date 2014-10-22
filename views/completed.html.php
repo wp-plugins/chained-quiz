@@ -8,6 +8,8 @@
 		<h3 align="center"><a href="http://wordpress.org/support/view/plugin-reviews/chained-quiz" target="_blank"><?php _e('Please rate us 5 Stars!', 'chained')?></a></h3>
 	
 	<?php if(sizeof($records)):?>
+		<p><a href="admin.php?page=chainedquiz_list&quiz_id=<?php echo $quiz->id?>&chained_export=1&noheader=1"><?php _e('Export CSV', 'chained')?></a>
+		<?php _e('(Will export TAB delimited file.)', 'chained')?></p>
 		<table class="widefat">
 			<tr><th><a href="admin.php?page=chainedquiz_list&quiz_id=<?php echo $quiz->id?>&ob=tC.id&dir=<?php echo self :: define_dir('tC.id', $ob, $dir);?>"><?php _e('Record ID','chained')?></a></th><th><?php _e('User name or IP','chained')?></th><th><a href="admin.php?page=chainedquiz_list&quiz_id=<?php echo $quiz->id?>&ob=datetime&dir=<?php echo self :: define_dir('datetime', $ob, $dir);?>"><?php _e('Date/time','chained')?></a></th>
 			<th><a href="admin.php?page=chainedquiz_list&quiz_id=<?php echo $quiz->id?>&ob=points&dir=<?php echo self :: define_dir('points', $ob, $dir);?>"><?php _e('Points','chained')?></a></th><th><a href="admin.php?page=chainedquiz_list&quiz_id=<?php echo $quiz->id?>&ob=result_title&dir=<?php echo self :: define_dir('result_title', $ob, $dir);?>"><?php _e('Result','chained')?></a></th></tr>
@@ -17,7 +19,7 @@
 				<td><?php echo $record->id?></td>
 				<td><?php echo empty($record->user_id) ? $record->ip : $record->user_nicename?></td>
 				<td><?php echo date($dateformat.' '.$timeformat, strtotime($record->datetime))?></td>
-				<td><?php echo $record->points?></td><td><?php echo $record->result_title;
+				<td><?php echo $record->points?></td><td><?php echo stripslashes($record->result_title);
 				if(sizeof($record->details)):?><p><a href="#" onclick="jQuery('#recordDetails<?php echo $record->id?>').toggle();return false;"><?php _e('View details', 'chained');?></a></p><?php endif;?></td></tr>
 				<?php if(sizeof($record->details)):?>
 					<tr class="<?php echo $class?>" id="recordDetails<?php echo $record->id?>" style="display:none;">

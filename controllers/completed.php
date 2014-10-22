@@ -10,11 +10,13 @@ class ChainedQuizCompleted {
 		
 		// select completed records, paginate by 50
 		$offset = empty($_GET['offset']) ? 0 : $_GET['offset'];
+		$limit_sql = empty($_GET['chained_export']) ? "LIMIT $offset, 25" : ""; 		
+		
 		$records = $wpdb->get_results( $wpdb->prepare("SELECT SQL_CALC_FOUND_ROWS tC.*, tU.user_nicename as user_nicename, tR.title as result_title
 			FROM ".CHAINED_COMPLETED." tC LEFT JOIN ".CHAINED_RESULTS." tR ON tR.id = tC.result_id
 			LEFT JOIN {$wpdb->users} tU ON tU.ID = tC.user_id
 			WHERE tC.quiz_id=%d
-			ORDER BY $ob $dir LIMIT $offset, 25", $quiz->id));
+			ORDER BY $ob $dir $limit_sql", $quiz->id));
 			
 		$count = $wpdb->get_var("SELECT FOUND_ROWS()"); 	
 		
@@ -72,6 +74,31 @@ class ChainedQuizCompleted {
 		
 		$dateformat = get_option('date_format');
 		$timeformat = get_option('time_format');
+		
+		if(!empty($_GET['chained_export'])) {
+			$newline=kiboko_define_newline();		
+			
+			$csv = "";
+			$rows=array();
+			$rows[]=__("Record ID", 'chained')."\t".__("User name or IP", 'chained')."\t".
+				__("Date / time", 'chained')."\t".__("Points", 'chained')."\t".__("Record ID", 'chained');
+			foreach($records as $record) {
+				$row = $record->id . "\t" . (empty($record->user_id) ? $record->ip : $record->user_nicename) 
+					. "\t" . date($dateformat.' '.$timeformat, strtotime($record->datetime)) 
+					. "\t" . $record->points ."\t" . stripslashes($record->result_title);
+				$rows[] = $row;		
+			} // end foreach taking
+			$csv=implode($newline,$rows);		
+			
+			$now = gmdate('D, d M Y H:i:s') . ' GMT';	
+			$filename = 'quiz-'.$quiz->id.'-results.csv';	
+			header('Content-Type: ' . kiboko_get_mime_type());
+			header('Expires: ' . $now);
+			header('Content-Disposition: attachment; filename="'.$filename.'"');
+			header('Pragma: no-cache');
+			echo $csv;
+			exit;
+		}	
 			
 		include(CHAINED_PATH."/views/completed.html.php");
 	} // end manage

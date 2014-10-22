@@ -2,15 +2,33 @@
 # This file is distributed under the same license as the Chained Quiz package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Chained Quiz 0.7\n"
+"Project-Id-Version: Chained Quiz 0.7.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/chained-quiz\n"
-"POT-Creation-Date: 2014-07-23 14:34:32+00:00\n"
+"POT-Creation-Date: 2014-10-22 09:03:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: controllers/completed.php:83 controllers/completed.php:84
+#: views/completed.html.php:14
+msgid "Record ID"
+msgstr ""
+
+#: controllers/completed.php:83 views/completed.html.php:14
+msgid "User name or IP"
+msgstr ""
+
+#: controllers/completed.php:84
+msgid "Date / time"
+msgstr ""
+
+#: controllers/completed.php:84 views/completed.html.php:15
+#: views/completed.html.php:28
+msgid "Points"
+msgstr ""
 
 #: controllers/quizzes.php:32
 msgid ""
@@ -41,7 +59,7 @@ msgstr ""
 msgid "No quiz to load"
 msgstr ""
 
-#. #-#-#-#-#  chained-quiz.pot (Chained Quiz 0.7)  #-#-#-#-#
+#. #-#-#-#-#  chained-quiz.pot (Chained Quiz 0.7.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: models/basic.php:105
 msgid "Chained Quiz"
@@ -128,7 +146,7 @@ msgstr ""
 msgid "There are no quizzes yet."
 msgstr ""
 
-#: views/chained-quizzes.html.php:34 views/questions.html.php:25
+#: views/chained-quizzes.html.php:34 views/questions.html.php:29
 #: views/results.html.php:44
 msgid "Are you sure?"
 msgstr ""
@@ -188,47 +206,43 @@ msgstr ""
 msgid "Please rate us 5 Stars!"
 msgstr ""
 
-#: views/completed.html.php:12
-msgid "Record ID"
+#: views/completed.html.php:11
+msgid "Export CSV"
 msgstr ""
 
 #: views/completed.html.php:12
-msgid "User name or IP"
+msgid "(Will export TAB delimited file.)"
 msgstr ""
 
-#: views/completed.html.php:12
+#: views/completed.html.php:14
 msgid "Date/time"
 msgstr ""
 
-#: views/completed.html.php:13 views/completed.html.php:26
-msgid "Points"
-msgstr ""
-
-#: views/completed.html.php:13
+#: views/completed.html.php:15
 msgid "Result"
 msgstr ""
 
-#: views/completed.html.php:21
+#: views/completed.html.php:23
 msgid "View details"
 msgstr ""
 
-#: views/completed.html.php:25 views/questions.html.php:12
+#: views/completed.html.php:27 views/questions.html.php:12
 msgid "Question"
 msgstr ""
 
-#: views/completed.html.php:25
+#: views/completed.html.php:27
 msgid "Answer"
 msgstr ""
 
-#: views/completed.html.php:39
+#: views/completed.html.php:41
 msgid "previous page"
 msgstr ""
 
-#: views/completed.html.php:41
+#: views/completed.html.php:43
 msgid "next page"
 msgstr ""
 
-#: views/completed.html.php:43
+#: views/completed.html.php:49
 msgid "No one has submitted this quiz yet."
 msgstr ""
 
