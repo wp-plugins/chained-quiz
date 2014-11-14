@@ -4,9 +4,10 @@ Plugin Name: Chained Quiz
 Plugin URI: http://calendarscripts.info/chained-quiz.html
 Description: Create a chained quiz where the upcoming questions can depend on the previous answer
 Author: Kiboko Labs
-Version: 0.7.2
+Version: 0.7.3
 Author URI: http://calendarscripts.info/
 License: GPLv2 or later
+Text domain: chained
 */
 
 define( 'CHAINED_PATH', dirname( __FILE__ ) );

@@ -10,7 +10,16 @@ class ChainedQuizCompleted {
 		
 		// select completed records, paginate by 50
 		$offset = empty($_GET['offset']) ? 0 : $_GET['offset'];
-		$limit_sql = empty($_GET['chained_export']) ? "LIMIT $offset, 25" : ""; 		
+		$limit_sql = empty($_GET['chained_export']) ? "LIMIT $offset, 25" : ""; 
+		
+		if(!empty($_GET['del'])) {
+			$wpdb->query($wpdb->prepare("DELETE FROM ".CHAINED_COMPLETED." WHERE id=%d", $_GET['del']));
+		}		
+		
+		if(!empty($_POST['cleanup_all'])) {
+			$wpdb->query($wpdb->prepare("DELETE FROM ".CHAINED_COMPLETED." WHERE quiz_id=%d", $quiz->id));
+			chained_redirect("admin.php?page=chainedquiz_list&quiz_id=".$quiz->id);	 
+		}
 		
 		$records = $wpdb->get_results( $wpdb->prepare("SELECT SQL_CALC_FOUND_ROWS tC.*, tU.user_nicename as user_nicename, tR.title as result_title
 			FROM ".CHAINED_COMPLETED." tC LEFT JOIN ".CHAINED_RESULTS." tR ON tR.id = tC.result_id

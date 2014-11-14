@@ -60,10 +60,11 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 0.7.2 =
+= Version 0.7.3 =
 - Changed the way open-end questions work. If user's answer doesn't match any of your answers, they'll be sent to the next question instead of finalizing the quiz
 - Fixed problem with showing open-end questions in the "view results" page
 - Added option to export resutls to CSV file
+- Added "Delete" and "cleanup all data" functions for the submitted quiz results
 
 = Version 0.7 =
 - Now the detailed answers and the path user walked will be stored, and can be seen in the "View submissions" page.
