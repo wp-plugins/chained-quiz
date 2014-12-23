@@ -6,6 +6,7 @@ chainedQuiz.goon = function(quizID, url) {
 	// make sure there is answer selected
 	var qType = jQuery('#chained-quiz-form-' + quizID + ' input[name=question_type]').val();	
 	var chkClass = 'chained-quiz-' + qType;
+	jQuery('#chained-quiz-action-' + quizID).attr('disabled', true);
 	
 	// is any checked?
 	var anyChecked = false;
@@ -15,11 +16,13 @@ chainedQuiz.goon = function(quizID, url) {
 	
 	if(!anyChecked && (qType != 'text')) {
 		alert(chained_i18n.please_answer);
+		jQuery('#chained-quiz-action-' + quizID).removeAttr('disabled');
 		return false;
 	}
 
   if(qType == 'text' && jQuery('#chained-quiz-form-' + quizID + ' textarea[name=answer]').val() == '') {
-  	alert(chained_i18n.please_answer);
+  		alert(chained_i18n.please_answer);
+  		jQuery('#chained-quiz-action-' + quizID).removeAttr('disabled');
 		return false;
   }
 	
@@ -41,6 +44,8 @@ chainedQuiz.goon = function(quizID, url) {
 			   		scrollTop: jQuery('#chained-quiz-wrap-'+quizID).offset().top -100
 			   }, 500);   
 			}		  
+			
+		  jQuery('#chained-quiz-action-' + quizID).removeAttr('disabled');
 		  
 		  jQuery('#chained-quiz-div-'+quizID).html(parts[1]);
 		  jQuery('#chained-quiz-form-' + quizID + ' input[name=points]').val(chainedQuiz.points);

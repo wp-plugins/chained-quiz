@@ -2,7 +2,7 @@
 Contributors: prasunsen
 Tags: quiz, exam, test, questionnaire, survey
 Requires at least: 3.3
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: trunk
 License: GPL2
 
@@ -60,11 +60,12 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 0.7.3 =
+= Version 0.7.4 =
 - Changed the way open-end questions work. If user's answer doesn't match any of your answers, they'll be sent to the next question instead of finalizing the quiz
 - Fixed problem with showing open-end questions in the "view results" page
 - Added option to export resutls to CSV file
 - Added "Delete" and "cleanup all data" functions for the submitted quiz results
+- Fixed problem with double points when the button is clicked quickly
 
 = Version 0.7 =
 - Now the detailed answers and the path user walked will be stored, and can be seen in the "View submissions" page.
