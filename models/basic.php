@@ -93,10 +93,17 @@ class ChainedQuiz {
 	  
 	  
 	  chainedquiz_add_db_fields(array(
-	  	  array("name" => 'autocontinue', 'type' => 'TINYINT UNSIGNED NOT NULL DEFAULT 0')
+	  	  array("name" => 'autocontinue', 'type' => 'TINYINT UNSIGNED NOT NULL DEFAULT 0'),
+	  	  array("name" => 'sort_order', 'type' => 'INT UNSIGNED NOT NULL DEFAULT 0'),
 	  ), CHAINED_QUESTIONS);
 	  
-	  update_option('chainedquiz_version', "0.59");
+	  // fix sort order once for old quizzes (in version 0.7.5)
+		if(get_option('chained_fixed_sort_order') != 1) {
+			ChainedQuizQuestions :: fix_sort_order_global();
+			update_option('chained_fixed_sort_order', 1);
+		}	
+	  
+	  update_option('chainedquiz_version', "0.63");
 	  // exit;
    }
    
@@ -152,10 +159,10 @@ class ChainedQuiz {
 		define( 'CHAINED_VERSION', get_option('chained_version'));
 				
 		// shortcodes
-		add_shortcode('chained-quiz', array("ChainedQuizShortcodes", "quiz"));		
-		
+		add_shortcode('chained-quiz', array("ChainedQuizShortcodes", "quiz"));	
+				
 		$version = get_option('chainedquiz_version');
-		if($version < '0.59') self::install(true);
+		if($version < '0.63') self::install(true);
 	}
 			
 	// manage general options

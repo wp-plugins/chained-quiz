@@ -60,12 +60,14 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 0.7.4 =
+= Version 0.8 =
+- Added option to reorder questions 
 - Changed the way open-end questions work. If user's answer doesn't match any of your answers, they'll be sent to the next question instead of finalizing the quiz
 - Fixed problem with showing open-end questions in the "view results" page
 - Added option to export resutls to CSV file
 - Added "Delete" and "cleanup all data" functions for the submitted quiz results
 - Fixed problem with double points when the button is clicked quickly
+- Fixed bugs with selecting "next question"
 
 = Version 0.7 =
 - Now the detailed answers and the path user walked will be stored, and can be seen in the "View submissions" page.

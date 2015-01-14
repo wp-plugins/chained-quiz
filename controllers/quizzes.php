@@ -106,7 +106,7 @@ You achieved {{points}} points from {{questions}} questions.', 'chained');
 	   
 		 // select the first question
 		 $question = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".CHAINED_QUESTIONS." WHERE quiz_id=%d
-		 	ORDER BY id LIMIT 1", $quiz->id));
+		 	ORDER BY sort_order, id LIMIT 1", $quiz->id));
 		 
 		 // select possible answers
 		 $choices = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".CHAINED_CHOICES." 

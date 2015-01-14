@@ -77,8 +77,54 @@ class ChainedQuizQuestions {
 			$_question->delete($_GET['id']);			
 		}
 		
+		if(!empty($_GET['move'])) {
+			// select question
+			$question = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".CHAINED_QUESTIONS." WHERE id=%d", $_GET['move']));
+			
+			if($_GET['dir'] == 'up') {
+				$new_order = $question->sort_order - 1;
+				if($new_order < 0) $new_order = 0;
+				
+				// shift others
+				$wpdb->query($wpdb->prepare("UPDATE ".CHAINED_QUESTIONS." SET sort_order=sort_order+1 
+				  WHERE id!=%d AND sort_order=%d AND quiz_id=%d", $_GET['move'], $new_order, $_GET['quiz_id']));
+			}
+			else {
+				$new_order = $question->sort_order+1;			
+	
+				// shift others
+				$wpdb->query($wpdb->prepare("UPDATE ".CHAINED_QUESTIONS." SET sort_order=sort_order-1 
+	  				WHERE id!=%d AND sort_order=%d AND quiz_id=%d", $_GET['move'], $new_order, $_GET['quiz_id']));
+			}
+			
+			// change this one
+			$wpdb->query($wpdb->prepare("UPDATE ".CHAINED_QUESTIONS." SET sort_order=%d WHERE id=%d", 
+				$new_order, $_GET['move']));
+				
+			// redirect 	
+			chained_redirect('admin.php?page=chainedquiz_questions&quiz_id=' . $_GET['quiz_id']);
+		}
+		
 		$quiz = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".CHAINED_QUIZZES." WHERE id=%d", $_GET['quiz_id']));
-		$questions = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".CHAINED_QUESTIONS." WHERE quiz_id=%d ORDER BY id", $_GET['quiz_id']));
+		$questions = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".CHAINED_QUESTIONS." WHERE quiz_id=%d ORDER BY sort_order, id", $_GET['quiz_id']));
+		$count = sizeof($questions);
 		include(CHAINED_PATH."/views/questions.html.php");
-	} // end list_quizzes	
+	} // end list_quizzes
+	
+	// initially fix sort order of the questions in all quizzes
+	// it sets order based on question ID
+	static function fix_sort_order_global() {
+		global $wpdb;
+		
+		$quizzes = $wpdb->get_results("SELECT id FROM ".CHAINED_QUIZZES);
+		
+		foreach($quizzes as $quiz) {
+			$min_id = $wpdb->get_var($wpdb->prepare("SELECT MIN(id) FROM ".CHAINED_QUESTIONS." WHERE quiz_id=%d", $quiz->id));
+			$min_id--;
+			
+			$wpdb->query($wpdb->prepare("UPDATE ".CHAINED_QUESTIONS." SET
+				sort_order = id - %d WHERE quiz_id=%d", $min_id, $quiz->id));
+		}
+		
+	}	// end fix_sort_order_global
 }

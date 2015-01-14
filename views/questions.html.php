@@ -9,12 +9,20 @@
 	<p><a href="admin.php?page=chainedquiz_questions&action=add&quiz_id=<?php echo $quiz->id?>"><?php _e('Click here to add new question', 'chained')?></a></p>
 	<?php if(sizeof($questions)):?>
 		<table class="widefat">
-			<tr><th><?php _e('ID', 'chained')?></th><th><?php _e('Question', 'chained')?></th><th><?php _e('Type', 'chained')?></th>
+			<tr><th>#</th><th><?php _e('ID', 'chained')?></th><th><?php _e('Question', 'chained')?></th><th><?php _e('Type', 'chained')?></th>
 				<th><?php _e('Edit / Delete', 'chained')?></th></tr>
-			<?php foreach($questions as $question):
+			<?php foreach($questions as $cnt=>$question):
 				$class = ('alternate' == @$class) ? '' : 'alternate';?>
-				<tr class="<?php echo $class?>"><td><?php echo $question->id?></td><td><?php echo stripslashes($question->title)?></td>
-				<td><?php echo $question->qtype?></td><td><a href="admin.php?page=chainedquiz_questions&action=edit&id=<?php echo $question->id?>"><?php _e('Edit', 'chained')?></a> | <a href="#" onclick="chainedConfirmDelete(<?php echo $question->id?>);return false;"><?php _e('Delete', 'chained')?></a></td></tr>
+				<tr class="<?php echo $class?>">
+					<td><?php if($count > 1 and $cnt):?>
+						<a href="admin.php?page=chainedquiz_questions&quiz_id=<?php echo $quiz->id?>&move=<?php echo $question->id?>&dir=up"><img src="<?php echo CHAINED_URL."/img/arrow-up.png"?>" alt="<?php _e('Move Up', 'hostelpro')?>" border="0"></a>
+					<?php else:?>&nbsp;<?php endif;?>
+					<?php if($count > $cnt+1):?>	
+						<a href="admin.php?page=chainedquiz_questions&quiz_id=<?php echo $quiz->id?>&move=<?php echo $question->id?>&dir=down"><img src="<?php echo CHAINED_URL."/img/arrow-down.png"?>" alt="<?php _e('Move Down', 'hostelpro')?>" border="0"></a>
+					<?php else:?>&nbsp;<?php endif;?></td>					
+					<td><?php echo $question->id?></td><td><?php echo stripslashes($question->title)?></td>
+					<td><?php echo $question->qtype?></td><td><a href="admin.php?page=chainedquiz_questions&action=edit&id=<?php echo $question->id?>"><?php _e('Edit', 'chained')?></a> | <a href="#" onclick="chainedConfirmDelete(<?php echo $question->id?>);return false;"><?php _e('Delete', 'chained')?></a></td>
+				</tr>
 			<?php endforeach;?>	
 		</table>
 		

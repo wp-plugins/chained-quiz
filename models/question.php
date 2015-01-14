@@ -3,9 +3,15 @@ class ChainedQuizQuestion {
 	function add($vars) {
 		global $wpdb;
 		
+		// sort order
+		$sort_order = $wpdb->get_var($wpdb->prepare("SELECT MAX(sort_order) FROM ".CHAINED_QUESTIONS."
+			WHERE quiz_id=%d", $vars['quiz_id']));
+		$sort_order++;	 
+		
 		$result = $wpdb->query($wpdb->prepare("INSERT INTO ".CHAINED_QUESTIONS." SET
-			quiz_id=%d, question=%s, qtype=%s, rank=%d, title=%s, autocontinue=%d", 
-			$vars['quiz_id'], $vars['question'], $vars['qtype'], @$vars['rank'], $vars['title'], @$vars['autocontinue']));
+			quiz_id=%d, question=%s, qtype=%s, rank=%d, title=%s, autocontinue=%d, sort_order=%d", 
+			$vars['quiz_id'], $vars['question'], $vars['qtype'], @$vars['rank'], $vars['title'], 
+			@$vars['autocontinue'], $sort_order));
 			
 		if($result === false) throw new Exception(__('DB Error', 'chained'));
 		return $wpdb->insert_id;	
@@ -170,9 +176,9 @@ class ChainedQuizQuestion {
 		if(empty($key) or $key == 'finalize') return false;
 		
 		if($key == 'next') {
-			// select next question by ID
+			// select next question by sort_order
 			$question = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".CHAINED_QUESTIONS." 
-				WHERE quiz_id=%d AND id>%d LIMIT 1", $question->quiz_id, $question->id));
+				WHERE quiz_id=%d AND sort_order > %d ORDER BY sort_order LIMIT 1", $question->quiz_id, $question->sort_order));
 			return $question;	
 		}
 	
