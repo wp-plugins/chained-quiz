@@ -52,8 +52,8 @@ class ChainedQuiz {
 			$sql = "CREATE TABLE `" . CHAINED_RESULTS . "` (
 				  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 				  `quiz_id` INT UNSIGNED NOT NULL DEFAULT 0,
-				  `points_bottom` DECIMAL(4,2) NOT NULL DEFAULT '0.00',
-				  `points_top` DECIMAL(4,2) NOT NULL DEFAULT '0.00',
+				  `points_bottom` DECIMAL(8,2) NOT NULL DEFAULT '0.00',
+				  `points_top` DECIMAL(8,2) NOT NULL DEFAULT '0.00',
 				  `title` VARCHAR(255) NOT NULL DEFAULT '',
 				  `description` TEXT 
 				) DEFAULT CHARSET=utf8;";
