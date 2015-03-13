@@ -39,6 +39,10 @@ This is an unique quiz plugin that lets you create quizzes where the next questi
 
 This unique quiz plugin lets you guide the user through the questions in the way you want. It's not only a very powerful tool for creating exams and quizzes, but can be used also to funel a sales process depending on user's selection.
 
+### Community Translations ###
+
+- Chinese (actual to 0.8.1), thanks to @osfans [.po](http://calendarscripts.info/free/wordpress/chained-quiz/chained-zh_CN.po ".po") / [.mo](http://calendarscripts.info/free/wordpress/chained-quiz/chained-zh_CN.mo ".mo")
+
 == Installation ==
 
 1. Unzip the contents and upload the entire `chained-quiz` directory to the `/wp-content/plugins/` directory
