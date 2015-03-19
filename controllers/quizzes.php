@@ -150,7 +150,8 @@ You achieved {{points}} points from {{questions}} questions.', 'chained');
 			
 			if($exists) {
 				$wpdb->query($wpdb->prepare("UPDATE ".CHAINED_USER_ANSWERS." SET
-					answer=%s, points=%f", $answer, $points));
+					answer=%s, points=%f WHERE quiz_id=%d AND completion_id=%d AND question_id=%d", 
+					$answer, $points, $quiz->id, $_SESSION['chained_completion_id'], $question->id));
 			}
 			else {				
 				$wpdb->query($wpdb->prepare("INSERT INTO ".CHAINED_USER_ANSWERS." SET
