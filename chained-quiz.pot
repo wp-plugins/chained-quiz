@@ -1,14 +1,14 @@
-# Copyright (C) 2014 Chained Quiz
+# Copyright (C) 2015 Chained Quiz
 # This file is distributed under the same license as the Chained Quiz package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Chained Quiz 0.7.3\n"
+"Project-Id-Version: Chained Quiz 0.8.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/chained-quiz\n"
-"POT-Creation-Date: 2014-11-14 15:33:17+00:00\n"
+"POT-Creation-Date: 2015-03-27 16:46:48+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
@@ -59,31 +59,31 @@ msgstr ""
 msgid "No quiz to load"
 msgstr ""
 
-#. #-#-#-#-#  chained-quiz.pot (Chained Quiz 0.7.3)  #-#-#-#-#
+#. #-#-#-#-#  chained-quiz.pot (Chained Quiz 0.8.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: models/basic.php:105
+#: models/basic.php:116
 msgid "Chained Quiz"
 msgstr ""
 
-#: models/basic.php:108
+#: models/basic.php:119
 msgid "Chained Quiz Results"
 msgstr ""
 
-#: models/basic.php:110
+#: models/basic.php:121
 msgid "Chained Quiz Questions"
 msgstr ""
 
-#: models/basic.php:112
+#: models/basic.php:123
 msgid "Users Completed Quiz"
 msgstr ""
 
-#: models/basic.php:134
+#: models/basic.php:145
 msgid "Please answer the question"
 msgstr ""
 
-#: models/question.php:10 models/question.php:22 models/question.php:35
-#: models/quiz.php:9 models/quiz.php:19 models/result.php:10
-#: models/result.php:21 models/result.php:31
+#: models/question.php:16 models/question.php:28 models/question.php:41
+#: models/quiz.php:9 models/quiz.php:19 models/result.php:11
+#: models/result.php:23 models/result.php:33
 msgid "DB Error"
 msgstr ""
 
@@ -127,12 +127,12 @@ msgstr ""
 msgid "View submissions"
 msgstr ""
 
-#: views/chained-quizzes.html.php:18 views/questions.html.php:17
+#: views/chained-quizzes.html.php:18 views/questions.html.php:24
 msgid "Edit"
 msgstr ""
 
 #: views/chained-quizzes.html.php:19 views/completed.html.php:16
-#: views/completed.html.php:25 views/questions.html.php:17
+#: views/completed.html.php:25 views/questions.html.php:24
 msgid "Delete"
 msgstr ""
 
@@ -148,7 +148,7 @@ msgid "There are no quizzes yet."
 msgstr ""
 
 #: views/chained-quizzes.html.php:34 views/completed.html.php:67
-#: views/questions.html.php:29 views/results.html.php:44
+#: views/questions.html.php:37 views/results.html.php:48
 msgid "Are you sure?"
 msgstr ""
 
@@ -335,6 +335,14 @@ msgstr ""
 msgid "Edit / Delete"
 msgstr ""
 
+#: views/questions.html.php:18
+msgid "Move Up"
+msgstr ""
+
+#: views/questions.html.php:21
+msgid "Move Down"
+msgstr ""
+
 #: views/quiz.html.php:2
 msgid "Add/Edit Chained Quiz"
 msgstr ""
@@ -393,34 +401,44 @@ msgstr ""
 msgid "Manage Quiz Results/Outcomes"
 msgstr ""
 
-#: views/results.html.php:10 views/results.html.php:20
+#: views/results.html.php:10 views/results.html.php:22
 msgid "Result title"
 msgstr ""
 
-#: views/results.html.php:11 views/results.html.php:21
+#: views/results.html.php:11 views/results.html.php:23
 msgid "Result text/description"
 msgstr ""
 
-#: views/results.html.php:12 views/results.html.php:22
+#: views/results.html.php:12 views/results.html.php:24
 msgid "Min. points:"
 msgstr ""
 
-#: views/results.html.php:13 views/results.html.php:23
+#: views/results.html.php:13 views/results.html.php:25
 msgid "Max. points:"
 msgstr ""
 
-#: views/results.html.php:14
+#: views/results.html.php:14 views/results.html.php:26
+msgid "Optional redirect URL"
+msgstr ""
+
+#: views/results.html.php:15 views/results.html.php:27
+msgid ""
+"If you enter this, the quiz will redirect to the URL instead of showing the "
+"\"Final Output\"."
+msgstr ""
+
+#: views/results.html.php:16
 msgid "Add Result"
 msgstr ""
 
-#: views/results.html.php:24
+#: views/results.html.php:28
 msgid "Save Result"
 msgstr ""
 
-#: views/results.html.php:25
+#: views/results.html.php:29
 msgid "Delete Result"
 msgstr ""
 
-#: views/results.html.php:35
+#: views/results.html.php:39
 msgid "Please enter title"
 msgstr ""

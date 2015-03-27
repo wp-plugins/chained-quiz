@@ -64,6 +64,9 @@ None yet, please ask in the forum
 
 == Changelog ==
 
+= Version 0.8.2 =
+- Added optional redirect URL for the quiz results. When filled, user who achieves the given result will be automatically redirected to the URL instead of shown the result on the screen.
+
 = Version 0.8 =
 - Added option to reorder questions 
 - Changed the way open-end questions work. If user's answer doesn't match any of your answers, they'll be sent to the next question instead of finalizing the quiz

@@ -47,6 +47,12 @@ chainedQuiz.goon = function(quizID, url) {
 			
 		  jQuery('#chained-quiz-action-' + quizID).removeAttr('disabled');
 		  
+		  // redirect?
+		  if(parts[1].indexOf('[CHAINED_REDIRECT]') != -1) {
+		  	  var sparts = parts[1].split('[CHAINED_REDIRECT]');
+		  	  window.location=sparts[1];
+		  }
+		  
 		  jQuery('#chained-quiz-div-'+quizID).html(parts[1]);
 		  jQuery('#chained-quiz-form-' + quizID + ' input[name=points]').val(chainedQuiz.points);
 	});

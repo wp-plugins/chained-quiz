@@ -70,6 +70,9 @@ class ChainedQuizQuiz {
 		 		$quiz->id, $points, @$result->id, $_SERVER['REMOTE_ADDR'], $user_id, $output));
 		 }
 		 
+		 // if the result needs to redirect, replace the output with the redirect URL
+		 if(!empty($result->redirect_url)) $output = "[CHAINED_REDIRECT]".$result->redirect_url;
+		 
 		 return $output;
   }
 }
