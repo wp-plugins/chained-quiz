@@ -2,7 +2,7 @@
 Contributors: prasunsen
 Tags: quiz, exam, test, questionnaire, survey
 Requires at least: 3.3
-Tested up to: 4.1
+Tested up to: 4.2
 Stable tag: trunk
 License: GPL2
 
@@ -64,7 +64,8 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 0.8.2 =
+= Version 0.8.3 =
+- The "Go ahead" button will be disabled by default intil at least one answer is selected or something typed in the text area
 - Added optional redirect URL for the quiz results. When filled, user who achieves the given result will be automatically redirected to the URL instead of shown the result on the screen.
 
 = Version 0.8 =

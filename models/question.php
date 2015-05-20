@@ -89,8 +89,7 @@ class ChainedQuizQuestion {
   	   $autocontinue = '';
   	   if($question->qtype == 'radio' and $question->autocontinue) {
   	   	$autocontinue = "onclick=\"chainedQuiz.goon(".$question->quiz_id.", '".admin_url('admin-ajax.php')."');\"";
-  	   }
-  	   
+  	   }  	   
   	   
 		switch($question->qtype) {
 			case 'text':

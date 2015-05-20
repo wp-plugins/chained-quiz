@@ -10,7 +10,7 @@
 		</div>
 		
 		<div class="chained-quiz-action">
-			<input type="button" id="chained-quiz-action-<?php echo $quiz->id?>" value="<?php _e('Go Ahead', 'chained')?>" onclick="chainedQuiz.goon(<?php echo $quiz->id?>, '<?php echo admin_url('admin-ajax.php')?>');">
+			<input type="button" id="chained-quiz-action-<?php echo $quiz->id?>" value="<?php _e('Go Ahead', 'chained')?>" onclick="chainedQuiz.goon(<?php echo $quiz->id?>, '<?php echo admin_url('admin-ajax.php')?>');" disabled="true">
 		</div>
 	</div>
 	<input type="hidden" name="question_id" value="<?php echo $question->id?>">
@@ -18,4 +18,10 @@
 	<input type="hidden" name="question_type" value="<?php echo $question->qtype?>">
 	<input type="hidden" name="points" value="0">
 </form>
-<?php if(!empty($first_load)):?></div><?php endif;?>
+<?php if(!empty($first_load)):?>
+</div>
+<script type="text/javascript" >
+jQuery(function(){
+	chainedQuiz.initializeQuestion(<?php echo $quiz->id?>);	
+});
+</script><?php endif;?>

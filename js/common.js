@@ -55,5 +55,22 @@ chainedQuiz.goon = function(quizID, url) {
 		  
 		  jQuery('#chained-quiz-div-'+quizID).html(parts[1]);
 		  jQuery('#chained-quiz-form-' + quizID + ' input[name=points]').val(chainedQuiz.points);
+		  
+		  chainedQuiz.initializeQuestion(quizID);
+	});
+}
+
+chainedQuiz.initializeQuestion = function(quizID) {
+	jQuery(".chained-quiz-frontend").click(function() {		
+		if(this.type == 'radio' || this.type == 'checkbox') {		
+			// enable button			
+			jQuery('#chained-quiz-action-' + quizID).removeAttr('disabled');
+		}
+	});
+	
+	jQuery(".chained-quiz-frontend").keyup(function() {
+		if(this.type == 'textarea') {
+			jQuery('#chained-quiz-action-' + quizID).removeAttr('disabled');
+		}
 	});
 }
