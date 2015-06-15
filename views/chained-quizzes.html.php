@@ -14,7 +14,10 @@
 				if(!empty($quiz->post)) echo "</a>";?></td><td><input type="text" size="12" value="[chained-quiz <?php echo $quiz->id?>]" readonly onclick="this.select();"></td>
 			<td><a href="admin.php?page=chainedquiz_questions&quiz_id=<?php echo $quiz->id?>"><?php _e('Manage', 'chained')?></a></td>
 			<td><a href="admin.php?page=chainedquiz_results&quiz_id=<?php echo $quiz->id?>"><?php _e('Manage', 'chained')?></a></td>
-			<td><a href="admin.php?page=chainedquiz_list&quiz_id=<?php echo $quiz->id?>"><?php _e('View submissions', 'chained')?></a></td>
+			<td><?php if($quiz->submissions):?>
+				<a href="admin.php?page=chainedquiz_list&quiz_id=<?php echo $quiz->id?>"><?php printf(__('%d users', 'chained'), $quiz->submissions);?></a>
+			<?php else: _e('No users', 'chained');
+			endif;?>	</td>
 			<td><a href="admin.php?page=chained_quizzes&action=edit&id=<?php echo $quiz->id?>"><?php _e('Edit', 'chained')?></a>
 			| <a href="#" onclick="confirmDelQuiz(<?php echo $quiz->id?>);return false;"><?php _e('Delete', 'chained')?></a></td></tr>
 		<?php endforeach;?>	

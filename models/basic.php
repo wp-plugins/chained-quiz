@@ -101,13 +101,18 @@ class ChainedQuiz {
 	  	  array("name" => 'redirect_url', 'type' => "VARCHAR(255) NOT NULL DEFAULT ''"),
 	  ), CHAINED_RESULTS);
 	  
+	  chainedquiz_add_db_fields(array(
+	  	  array("name" => 'email_admin', 'type' => "TINYINT UNSIGNED NOT NULL DEFAULT 0"),
+	  	  array("name" => 'email_user', 'type' => "TINYINT UNSIGNED NOT NULL DEFAULT 0"),
+	  ), CHAINED_QUIZZES);
+	  
 	  // fix sort order once for old quizzes (in version 0.7.5)
 		if(get_option('chained_fixed_sort_order') != 1) {
 			ChainedQuizQuestions :: fix_sort_order_global();
 			update_option('chained_fixed_sort_order', 1);
 		}	
 	  
-	  update_option('chainedquiz_version', "0.64");
+	  update_option('chainedquiz_version', "0.65");
 	  // exit;
    }
    
@@ -166,7 +171,7 @@ class ChainedQuiz {
 		add_shortcode('chained-quiz', array("ChainedQuizShortcodes", "quiz"));	
 				
 		$version = get_option('chainedquiz_version');
-		if($version < '0.64') self::install(true);
+		if($version < '0.65') self::install(true);
 	}
 			
 	// manage general options

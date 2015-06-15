@@ -1,6 +1,11 @@
 <?php if(!empty($first_load)):?><div class="chained-quiz" id="chained-quiz-div-<?php echo $quiz->id?>"><?php endif;?>
 <form method="post" id="chained-quiz-form-<?php echo $quiz->id?>">
 	<div class="chained-quiz-area" id="chained-quiz-wrap-<?php echo $quiz->id?>">
+		<?php if(!empty($quiz->email_user) and !is_user_logged_in()):?>
+			<div class="chained-quiz-email">
+				<p><label><?php _e('Your email address:', 'chained');?></label> <input type="text" name="chained_email" value="<?php echo @$_POST['chained_email']?>"></p>
+			</div>
+		<?php endif;?> 
 		<div class="chained-quiz-question">
 			<?php echo $_question->display_question($question);?>
 		</div>

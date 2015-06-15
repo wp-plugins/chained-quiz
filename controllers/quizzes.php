@@ -68,7 +68,9 @@ You achieved {{points}} points from {{questions}} questions.', 'chained');
 		}
 		
 		// select quizzes
-		$quizzes = $wpdb->get_results("SELECT * FROM ".CHAINED_QUIZZES." ORDER BY id DESC");
+		$quizzes = $wpdb->get_results("SELECT tQ.*, COUNT(tC.id) as submissions 
+			FROM ".CHAINED_QUIZZES." tQ LEFT JOIN ".CHAINED_COMPLETED." tC ON tC.quiz_id = tQ.id
+			GROUP BY tQ.id ORDER BY tQ.id DESC");
 		
 		// now select all posts that have watu shortcode in them
 		$posts=$wpdb->get_results("SELECT * FROM {$wpdb->posts} 

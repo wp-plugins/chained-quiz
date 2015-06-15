@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Chained Quiz package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Chained Quiz 0.8.2\n"
+"Project-Id-Version: Chained Quiz 0.8.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/chained-quiz\n"
-"POT-Creation-Date: 2015-03-27 16:46:48+00:00\n"
+"POT-Creation-Date: 2015-06-15 13:20:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -39,7 +39,7 @@ msgid ""
 "You achieved {{points}} points from {{questions}} questions."
 msgstr ""
 
-#: controllers/quizzes.php:97
+#: controllers/quizzes.php:99
 msgid "Quiz not found"
 msgstr ""
 
@@ -59,32 +59,52 @@ msgstr ""
 msgid "No quiz to load"
 msgstr ""
 
-#. #-#-#-#-#  chained-quiz.pot (Chained Quiz 0.8.2)  #-#-#-#-#
+#. #-#-#-#-#  chained-quiz.pot (Chained Quiz 0.8.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: models/basic.php:116
+#: models/basic.php:121
 msgid "Chained Quiz"
 msgstr ""
 
-#: models/basic.php:119
+#: models/basic.php:124
 msgid "Chained Quiz Results"
 msgstr ""
 
-#: models/basic.php:121
+#: models/basic.php:126
 msgid "Chained Quiz Questions"
 msgstr ""
 
-#: models/basic.php:123
+#: models/basic.php:128
 msgid "Users Completed Quiz"
 msgstr ""
 
-#: models/basic.php:145
+#: models/basic.php:150
 msgid "Please answer the question"
 msgstr ""
 
 #: models/question.php:16 models/question.php:28 models/question.php:41
-#: models/quiz.php:9 models/quiz.php:19 models/result.php:11
+#: models/quiz.php:10 models/quiz.php:21 models/result.php:11
 #: models/result.php:23 models/result.php:33
 msgid "DB Error"
+msgstr ""
+
+#: models/quiz.php:96
+msgid "User results on %s"
+msgstr ""
+
+#: models/quiz.php:100
+msgid "Username: %s <br> User email: %s"
+msgstr ""
+
+#: models/quiz.php:103
+msgid "User IP: %s"
+msgstr ""
+
+#: models/quiz.php:104
+msgid "User email: %s"
+msgstr ""
+
+#: models/quiz.php:114
+msgid "Your results on %s"
 msgstr ""
 
 #: views/chained-quizzes.html.php:2
@@ -123,31 +143,35 @@ msgstr ""
 msgid "Manage"
 msgstr ""
 
-#: views/chained-quizzes.html.php:17
-msgid "View submissions"
+#: views/chained-quizzes.html.php:18
+msgid "%d users"
 msgstr ""
 
-#: views/chained-quizzes.html.php:18 views/questions.html.php:24
+#: views/chained-quizzes.html.php:19
+msgid "No users"
+msgstr ""
+
+#: views/chained-quizzes.html.php:21 views/questions.html.php:24
 msgid "Edit"
 msgstr ""
 
-#: views/chained-quizzes.html.php:19 views/completed.html.php:16
+#: views/chained-quizzes.html.php:22 views/completed.html.php:16
 #: views/completed.html.php:25 views/questions.html.php:24
 msgid "Delete"
 msgstr ""
 
-#: views/chained-quizzes.html.php:22
+#: views/chained-quizzes.html.php:25
 msgid ""
 "Note: if a quiz title is not hyperlinked this means you have not published "
 "its shortcode yet. You must place the shortcode in a post or page in order "
 "to make the quiz accessible to the public."
 msgstr ""
 
-#: views/chained-quizzes.html.php:28
+#: views/chained-quizzes.html.php:31
 msgid "There are no quizzes yet."
 msgstr ""
 
-#: views/chained-quizzes.html.php:34 views/completed.html.php:67
+#: views/chained-quizzes.html.php:37 views/completed.html.php:67
 #: views/questions.html.php:37 views/results.html.php:48
 msgid "Are you sure?"
 msgstr ""
@@ -259,7 +283,11 @@ msgstr ""
 msgid "No one has submitted this quiz yet."
 msgstr ""
 
-#: views/display-quiz.html.php:13
+#: views/display-quiz.html.php:6
+msgid "Your email address:"
+msgstr ""
+
+#: views/display-quiz.html.php:18
 msgid "Go Ahead"
 msgstr ""
 
@@ -390,10 +418,22 @@ msgid "- The number of correctly answered questions"
 msgstr ""
 
 #: views/quiz.html.php:25
+msgid ""
+"Send me email when user completes this quiz. It will be delivered to the "
+"email address from your main WP Settings page."
+msgstr ""
+
+#: views/quiz.html.php:26
+msgid ""
+"Send email to user with their result. If the user is not logged in visitor "
+"an optional \"Enter email\" field will automatically appear above the quiz."
+msgstr ""
+
+#: views/quiz.html.php:28
 msgid "Save Quiz"
 msgstr ""
 
-#: views/quiz.html.php:33
+#: views/quiz.html.php:36
 msgid "Title is required"
 msgstr ""
 

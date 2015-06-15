@@ -75,3 +75,11 @@ if(!function_exists('kiboko_get_mime_type')) {
 		return $mime_type;
 	}
 }
+
+// get admin email. This overwrites the global setting with the watupro's setting.
+function chained_admin_email() {
+	$admin_email = get_option('chained_admin_email');
+	if(empty($admin_email)) $admin_email = get_option('admin_email');
+	
+	return $admin_email;
+}
