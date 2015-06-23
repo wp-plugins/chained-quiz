@@ -142,7 +142,7 @@ class ChainedQuiz {
 				'chained-common',
 				CHAINED_URL.'js/common.js',
 				false,
-				'0.8.3',
+				'0.8.4',
 				false
 		);
 		wp_enqueue_script("chained-common");

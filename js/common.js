@@ -36,9 +36,10 @@ chainedQuiz.goon = function(quizID, url) {
 	// console.log(data);
 	jQuery.post(url, data, function(msg) {
 		  parts = msg.split("|CHAINEDQUIZ|");
-		  points = parseFloat(parts[0]);		  
+		  points = parseFloat(parts[0]);
+		  if(isNaN(points)) points = 0;
 		  chainedQuiz.points += points;		  
-
+			
 			if(jQuery('body').scrollTop() > 250) {				
 				jQuery('html, body').animate({
 			   		scrollTop: jQuery('#chained-quiz-wrap-'+quizID).offset().top -100
@@ -53,7 +54,7 @@ chainedQuiz.goon = function(quizID, url) {
 		  	  window.location=sparts[1];
 		  }
 		  
-		  jQuery('#chained-quiz-div-'+quizID).html(parts[1]);
+		  jQuery('#chained-quiz-div-'+quizID).html(parts[1]);		  
 		  jQuery('#chained-quiz-form-' + quizID + ' input[name=points]').val(chainedQuiz.points);
 		  
 		  chainedQuiz.initializeQuestion(quizID);
