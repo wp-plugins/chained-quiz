@@ -93,7 +93,7 @@ class ChainedQuizCompleted {
 				__("Date / time", 'chained')."\t".__("Points", 'chained')."\t".__("Record ID", 'chained');
 			foreach($records as $record) {
 				$row = $record->id . "\t" . (empty($record->user_id) ? $record->ip : $record->user_nicename) 
-					. "\t" . date($dateformat.' '.$timeformat, strtotime($record->datetime)) 
+					. "\t" . date_i18n($dateformat.' '.$timeformat, strtotime($record->datetime)) 
 					. "\t" . $record->points ."\t" . stripslashes($record->result_title);
 				$rows[] = $row;		
 			} // end foreach taking

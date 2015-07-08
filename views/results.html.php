@@ -13,7 +13,7 @@
 		<?php _e('Max. points:', 'chained')?> <input type="text" size="4" name="points_top"></p>
 		<p><label><?php _e('Optional redirect URL', 'chained')?></label> <input type="text" name="redirect_url" size="60"><br />
 		<i><?php _e('If you enter this, the quiz will redirect to the URL instead of showing the "Final Output".', 'chained');?></i></p>
-		<p><input type="submit" name="add" value="<?php _e('Add Result', 'chained')?>"></p>
+		<p><input type="submit" name="add" value="<?php _e('Add Result', 'chained')?>" class="button-primary"></p>
 	</form>
 	
 	<?php foreach($results as $result):?>
@@ -25,8 +25,8 @@
 		<?php _e('Max. points:', 'chained')?> <input type="text" size="4" name="points_top" value="<?php echo $result->points_top?>"></p>
 		<p><label><?php _e('Optional redirect URL', 'chained')?></label> <input type="text" name="redirect_url" size="60" value="<?php echo $result->redirect_url?>"><br />
 		<i><?php _e('If you enter this, the quiz will redirect to the URL instead of showing the "Final Output".', 'chained');?></i></p>
-		<p><input type="submit" name="save" value="<?php _e('Save Result', 'chained')?>">
-		<input type="button" value="<?php _e('Delete Result', 'chained')?>" onclick="confirmDelChainedResult(this.form);"></p>
+		<p><input type="submit" name="save" value="<?php _e('Save Result', 'chained')?>" class="button-primary">
+		<input type="button" value="<?php _e('Delete Result', 'chained')?>" onclick="confirmDelChainedResult(this.form);" class="button"></p>
 		<input type="hidden" name="id" value="<?php echo $result->id?>">
 		<input type="hidden" name="del" value="0">
 	</form>

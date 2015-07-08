@@ -19,7 +19,7 @@
 				<tr class="<?php echo $class?>">				
 				<td><?php echo $record->id?></td>
 				<td><?php echo empty($record->user_id) ? $record->ip : $record->user_nicename?></td>
-				<td><?php echo date($dateformat.' '.$timeformat, strtotime($record->datetime))?></td>
+				<td><?php echo date_i18n($dateformat.' '.$timeformat, strtotime($record->datetime))?></td>
 				<td><?php echo $record->points?></td><td><?php echo stripslashes($record->result_title);
 				if(sizeof($record->details)):?><p><a href="#" onclick="jQuery('#recordDetails<?php echo $record->id?>').toggle();return false;"><?php _e('View details', 'chained');?></a></p><?php endif;?></td>
 				<td><a href="#" onclick="chainedQuizDelete(<?php echo $record->id?>);return false;"><?php _e('Delete', 'chained')?></a></td></tr>

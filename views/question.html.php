@@ -19,7 +19,7 @@
 		
 		<h3><?php _e('Choices/Answers for this question', 'chained')?></h3>
 		
-		<p> <input type="button" value="<?php _e('Add more rows', 'chained')?>" onclick="chainedQuizAddChoice();"></p>
+		<p> <input type="button" value="<?php _e('Add more rows', 'chained')?>" onclick="chainedQuizAddChoice();" class="button"></p>
 		
 		<div id="answerRows">
 			<?php if(!empty($choices) and sizeof($choices)):
@@ -31,7 +31,7 @@
 			include(CHAINED_PATH."/views/choice.html.php");?>
 		</div>
 		
-		<p><input type="submit" value="<?php _e('Save question and answers','chained')?>"></p>
+		<p><input type="submit" value="<?php _e('Save question and answers','chained')?>" class="button-primary"></p>
 		<input type="hidden" name="ok" value="1">
 		<input type="hidden" name="quiz_id" value="<?php echo $quiz->id?>">
 	</form>
