@@ -38,7 +38,7 @@
 </div>
 
 <script type="text/javascript" >
-numChoices = 1;
+var numChoices = 1;
 function chainedQuizAddChoice() {
 	html = '<?php ob_start();
 	include(CHAINED_PATH."/views/choice.html.php");
@@ -48,7 +48,8 @@ function chainedQuizAddChoice() {
 	
 	// the correct checkbox value
 	numChoices++;
-	html.replace('name="is_correct[]" value="1"', 'name="is_correct[]" value="'+numChoices+'"');
+	html = html.replace('name="is_correct[]" value="1"', 'name="is_correct[]" value="'+numChoices+'"');
+	
 	jQuery('#answerRows').append(html);
 }
 
