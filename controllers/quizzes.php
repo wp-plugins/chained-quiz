@@ -69,7 +69,7 @@ You achieved {{points}} points from {{questions}} questions.', 'chained');
 		
 		// select quizzes
 		$quizzes = $wpdb->get_results("SELECT tQ.*, COUNT(tC.id) as submissions 
-			FROM ".CHAINED_QUIZZES." tQ LEFT JOIN ".CHAINED_COMPLETED." tC ON tC.quiz_id = tQ.id
+			FROM ".CHAINED_QUIZZES." tQ LEFT JOIN ".CHAINED_COMPLETED." tC ON tC.quiz_id = tQ.id AND tC.not_empty=1
 			GROUP BY tQ.id ORDER BY tQ.id DESC");
 		
 		// now select all posts that have watu shortcode in them
@@ -160,6 +160,9 @@ You achieved {{points}} points from {{questions}} questions.', 'chained');
 					quiz_id=%d, completion_id=%d, question_id=%d, answer=%s, points=%f",
 					$quiz->id, $_SESSION['chained_completion_id'], $question->id, $answer, $points));
 			}		
+			
+			// update the "completed" record as non empty
+			$wpdb->query($wpdb->prepare("UPDATE ".CHAINED_COMPLETED." SET not_empty=1 WHERE id=%d", $_SESSION['chained_completion_id']));
 		}
 		
 		if(!empty($next_question->id)) {

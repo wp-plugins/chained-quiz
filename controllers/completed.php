@@ -24,7 +24,7 @@ class ChainedQuizCompleted {
 		$records = $wpdb->get_results( $wpdb->prepare("SELECT SQL_CALC_FOUND_ROWS tC.*, tU.user_nicename as user_nicename, tR.title as result_title
 			FROM ".CHAINED_COMPLETED." tC LEFT JOIN ".CHAINED_RESULTS." tR ON tR.id = tC.result_id
 			LEFT JOIN {$wpdb->users} tU ON tU.ID = tC.user_id
-			WHERE tC.quiz_id=%d
+			WHERE tC.quiz_id=%d AND tC.not_empty=1
 			ORDER BY $ob $dir $limit_sql", $quiz->id));
 			
 		$count = $wpdb->get_var("SELECT FOUND_ROWS()"); 	

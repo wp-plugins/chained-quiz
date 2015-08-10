@@ -66,7 +66,7 @@ class ChainedQuiz {
 			$sql = "CREATE TABLE `" . CHAINED_COMPLETED . "` (
 				  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 				  `quiz_id` INT UNSIGNED NOT NULL DEFAULT 0,
-				  `points` DECIMAL(4,2) NOT NULL DEFAULT '0.00',
+				  `points` DECIMAL(8,2) NOT NULL DEFAULT '0.00',
 				  `result_id` INT UNSIGNED NOT NULL DEFAULT 0,
 				  `datetime` DATETIME,
 				  `ip` VARCHAR(20) NOT NULL DEFAULT '',
@@ -106,13 +106,23 @@ class ChainedQuiz {
 	  	  array("name" => 'email_user', 'type' => "TINYINT UNSIGNED NOT NULL DEFAULT 0"),
 	  ), CHAINED_QUIZZES);
 	  
+	  chainedquiz_add_db_fields(array(
+	  	  array("name" => 'not_empty', 'type' => "TINYINT NOT NULL DEFAULT 0"), /*When initially creating a record, it is empty. If it remains so we have to delete it.*/
+	  ), CHAINED_COMPLETED);
+	  
 	  // fix sort order once for old quizzes (in version 0.7.5)
 		if(get_option('chained_fixed_sort_order') != 1) {
 			ChainedQuizQuestions :: fix_sort_order_global();
 			update_option('chained_fixed_sort_order', 1);
 		}	
+		
+		// update not_empty = 1 for all completed records prior to version 0.8.7 and DB version 0.66
+		$version = get_option('chainedquiz_version');
+		if($version < 0.67) {
+			$wpdb->query("UPDATE ".CHAINED_COMPLETED." SET not_empty=1");
+		}
 	  
-	  update_option('chainedquiz_version', "0.65");
+	  update_option('chainedquiz_version', "0.67");
 	  // exit;
    }
    
@@ -169,9 +179,15 @@ class ChainedQuiz {
 				
 		// shortcodes
 		add_shortcode('chained-quiz', array("ChainedQuizShortcodes", "quiz"));	
+		
+		// once daily delete empty records older than 1 day
+		if(get_option('chainedquiz_cleanup') != date("Y-m-d")) {
+			$wpdb->query("DELETE FROM ".CHAINED_COMPLETED." WHERE not_empty=0 AND datetime < '".current_time('mysql')."' - INTERVAL 24 HOUR");
+			update_option('chainedquiz_cleanup', date("Y-m-d"));
+		}
 				
 		$version = get_option('chainedquiz_version');
-		if($version < '0.65') self::install(true);
+		if($version < '0.67') self::install(true);
 	}
 			
 	// manage general options

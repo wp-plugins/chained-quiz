@@ -2,7 +2,7 @@
 Contributors: prasunsen
 Tags: quiz, exam, test, questionnaire, survey
 Requires at least: 3.3
-Tested up to: 4.2
+Tested up to: 4.3
 Stable tag: trunk
 License: GPL2
 
@@ -66,12 +66,13 @@ None yet, please ask in the forum
 
 == Changelog ==
 
-= Version 0.8.6 =
+= Version 0.8.7 =
 - Now you can send email to user and / or yourself when the quiz is completed. When "email user" option is selected, an email field will automatically appear on top of the quiz, unless the user is logged in.
 - The table with quizzes now shows how many respondents have taken the quiz
 - The "Go ahead" button will be disabled by default intil at least one answer is selected or something typed in the text area
 - Added optional redirect URL for the quiz results. When filled, user who achieves the given result will be automatically redirected to the URL instead of shown the result on the screen.
 - Improved date localization and styling of the admin buttons
+- Avoided keeping empty records when non logged users visit the quiz (these records will not be shown, but kept for 24 hours, then deleted)
 
 = Version 0.8 =
 - Added option to reorder questions 
